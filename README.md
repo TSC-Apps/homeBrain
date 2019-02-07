@@ -12,7 +12,5 @@ App written in JS and Flask that helps controlling home finances, enables user t
 
 ##### Design
 
-
-
-
+![](https://github.com/TSC-Apps/homeBrain/blob/master/preview.png)
 
