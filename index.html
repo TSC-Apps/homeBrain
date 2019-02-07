@@ -27,7 +27,7 @@
 
             <nav class="top-menu">
                 <ul>
-                    <li class="bold"><a href="#">Finanse</a></li>
+                    <li class="active bold"><a href="#">Finanse</a></li>
                     <li><a href="#">To-Do List</a></li>
                     <li><a href="#">Lista zakupów</a></li>
                     <li><a href="#">Jadłospis</a></li>
@@ -47,208 +47,212 @@
     
     <div class="content">
         <div class="content-wrapper">
-            <div id="ico-title-main">icon-title</div>
+            <img src="img/icon-finances.svg" alt="finances icon" class="ico-content">
             <h2 id="title-main">Finanse.</h2>
 
-            <section class="box" id="box-expenses">
-                <span class="ico" id="ico-expenses">ico-expenses</span>
-                <h4 class="title">Wydatki</h4>
+            <div class="boxes">
 
-                <select class="select-months" id="select-months-expenses">
-                    <option value="sty">STY</option>
-                    <option value="lut">LUT</option>
-                    <option value="mar">MAR</option>
-                    <option value="kwi">KWI</option>
-                    <option value="maj">MAJ</option>
-                    <option value="cze">CZE</option>
-                    <option value="lip">LIP</option>
-                    <option value="sie">SIE</option>
-                    <option value="wrz">WRZ</option>
-                    <option value="paz">PAZ</option>
-                    <option value="lis">LIS</option>
-                    <option value="gru">GRU</option>
-                </select>
-            
-                <table class="table" id="table-expenses">
-                    <tr class="table-header">
-                        <th></th>
-                        <th>nazwa</th>
-                        <th>wartość</th>
-                        <th>osoba</th> 
-                        <th>data</th>
-                    </tr>
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                <section class="box" id="box-expenses">
+                        <img src="img/icon-expenses.svg" class="ico" id="ico-expenses" alt="income icon">
+                        <h4 class="title">Wydatki</h4>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                    <select class="select-months" id="select-months-expenses">
+                        <option value="sty">STY</option>
+                        <option value="lut">LUT</option>
+                        <option value="mar">MAR</option>
+                        <option value="kwi">KWI</option>
+                        <option value="maj">MAJ</option>
+                        <option value="cze">CZE</option>
+                        <option value="lip">LIP</option>
+                        <option value="sie">SIE</option>
+                        <option value="wrz">WRZ</option>
+                        <option value="paz">PAZ</option>
+                        <option value="lis">LIS</option>
+                        <option value="gru">GRU</option>
+                    </select>
+                
+                    <table class="table" id="table-expenses">
+                        <tr class="table-header">
+                            <th></th>
+                            <th>nazwa</th>
+                            <th>wartość</th>
+                            <th>osoba</th> 
+                            <th>data</th>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
-                </table>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                <div class="box-sum box-sum-expenses">
-                    <p>Suma:</p>
-                    <p id="exnenses-sum">4354,04 zł</p>
-                </div>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
+                    </table>
 
-                <div class="btn btn-extend">Rozwiń</div>
-                <div class="btn btn-add">Dodaj</div>
-            </section>
+                    <div class="box-sum box-sum-expenses">
+                        <p>Suma:</p>
+                        <p id="exnenses-sum">4354,04 zł</p>
+                    </div>
 
-            <section class="box" id="box-income">
-                <span class="ico" id="ico-income">ico-income</span>
-                <h4 class="title">Wydatki</h4>
+                    <div class="btn btn-extend">Rozwiń</div>
+                    <div class="btn btn-add">Dodaj</div>
+                </section>
 
-                <select class="select-months" id="select-months-income">
-                    <option value="sty">STY</option>
-                    <option value="lut">LUT</option>
-                    <option value="mar">MAR</option>
-                    <option value="kwi">KWI</option>
-                    <option value="maj">MAJ</option>
-                    <option value="cze">CZE</option>
-                    <option value="lip">LIP</option>
-                    <option value="sie">SIE</option>
-                    <option value="wrz">WRZ</option>
-                    <option value="paz">PAZ</option>
-                    <option value="lis">LIS</option>
-                    <option value="gru">GRU</option>
-                </select>
-            
-                <table class="table" id="table-income">
-                    <tr class="table-header">
-                        <th></th>
-                        <th>nazwa</th>
-                        <th>wartość</th>
-                        <th>osoba</th> 
-                        <th>data</th>
-                    </tr>
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                <section class="box" id="box-income">
+                    <img src="img/icon-income.svg" class="ico" id="ico-income" alt="income icon">
+                    <h4 class="title">Przychody</h4>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                    <select class="select-months" id="select-months-income">
+                        <option value="sty">STY</option>
+                        <option value="lut">LUT</option>
+                        <option value="mar">MAR</option>
+                        <option value="kwi">KWI</option>
+                        <option value="maj">MAJ</option>
+                        <option value="cze">CZE</option>
+                        <option value="lip">LIP</option>
+                        <option value="sie">SIE</option>
+                        <option value="wrz">WRZ</option>
+                        <option value="paz">PAZ</option>
+                        <option value="lis">LIS</option>
+                        <option value="gru">GRU</option>
+                    </select>
+                
+                    <table class="table" id="table-income">
+                        <tr class="table-header">
+                            <th></th>
+                            <th>nazwa</th>
+                            <th>wartość</th>
+                            <th>osoba</th> 
+                            <th>data</th>
+                        </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                    <tr class="table-row">
-                        <td><span class="btn-table btn-delete">del</span></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><span class="btn-table btn-edit">edit</span></td>
-                    </tr>
-                </table>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
 
-                <div class="box-sum box-sum-income">
-                    <p>Suma:</p>
-                    <p id="income-sum">4354,04 zł</p>
-                </div>
+                        <tr class="table-row">
+                            <td><span class="btn-table btn-delete">del</span></td>
+                            <td class="table-item item-name">Warzywka</td>
+                            <td class="table-item item-value">-325 zł</td>
+                            <td class="table-item">Szymon</td>
+                            <td class="table-item">07.01.2018</td>
+                            <td><span class="btn-table btn-edit">edit</span></td>
+                        </tr>
+                    </table>
 
-                <div class="btn btn-extend">Rozwiń</div>
-                <div class="btn btn-add">Dodaj</div>
-            </section>
+                    <div class="box-sum box-sum-income">
+                        <p>Suma:</p>
+                        <p id="income-sum">4354,04 zł</p>
+                    </div>
+
+                    <div class="btn btn-extend">Rozwiń</div>
+                    <div class="btn btn-add">Dodaj</div>
+                </section>
+
+            </div>
 
             <section class="box-horizontal" id="box-summary">
                 <span class="ico" id="ico-summary">ico-summary</span>
