@@ -15,28 +15,33 @@
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
 <body>
 
     <div class="top-bar">
-        <span id="logo">homeBrain</span>
+        <div class="top-bar-wrapper">
+            <span id="logo">home<span class="logo-color">Brain</span></span>
 
-        <nav class="top-menu">
-            <ul>
-                <li><a href="#">Finanse</a></li>
-                <li><a href="#">TODO</a></li>
-                <li><a href="#">Lista zakupów</a></li>
-                <li><a href="#">Jadłospis</a></li>
-                <li><a href="#">Rezerwacje</a></li>
-            </ul>
-        </nav>
+            <nav class="top-menu">
+                <ul>
+                    <li class="bold"><a href="#">Finanse</a></li>
+                    <li><a href="#">To-Do List</a></li>
+                    <li><a href="#">Lista zakupów</a></li>
+                    <li><a href="#">Jadłospis</a></li>
+                    <li><a href="#">Rezerwacje</a></li>
+                </ul>
+            </nav>
 
-        <div class="user-actions">
-            <span class="hello-user">Witaj, <p id="user-name">Szymon</p>!</span>
-            <span class="ico-top-bar" id="ico-user">ico-user</span>
-            <span class="ico-top-bar" id="ico-settings">ico-settings</span>
-            <div class="btn-log-out">wyloguj</div>
+            <div class="user-actions">
+                Witaj, 
+                <span id="user-name">USER</span>!
+                <span class="fas fa-user" id="ico-user"></span>
+                <span class="fas fa-cog" id="ico-settings"></span>
+                <div id="btn-log-out">wyloguj</div>
+            </div>
         </div>
     </div>
     
@@ -48,6 +53,7 @@
             <section class="box" id="box-expenses">
                 <span class="ico" id="ico-expenses">ico-expenses</span>
                 <h4 class="title">Wydatki</h4>
+
                 <select class="select-months" id="select-months-expenses">
                     <option value="sty">STY</option>
                     <option value="lut">LUT</option>
@@ -147,6 +153,7 @@
             <section class="box" id="box-income">
                 <span class="ico" id="ico-income">ico-income</span>
                 <h4 class="title">Wydatki</h4>
+
                 <select class="select-months" id="select-months-income">
                     <option value="sty">STY</option>
                     <option value="lut">LUT</option>

@@ -1,0 +1,99 @@
+/* Variables */
+$family: 'Roboto', sans-serif;
+$main-color: #333;
+$orange: #E5604E;
+$green: #26DA6E;
+$red: #E93838;
+$blue: #333ADB;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $family;
+    font-size: 12px;
+    color: $main-color;
+    background-color: #F6F6F6;
+}
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+li.bold {
+    border-bottom: 3px solid #E3E3E3;
+}
+
+li a {
+    text-decoration: none;
+    color: $main-color;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* Top Bar */
+.top-bar {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+}
+
+.top-bar-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+}
+
+#logo {
+    font-size: 14px;
+    font-weight: bold;
+    color: #777;
+}
+
+.logo-color {
+    color: $green;
+}
+
+.top-menu {
+    li {
+        padding: 0 10px;
+        line-height: 50px;
+        display: inline-block;
+    }
+
+    ul {
+        margin: 0;
+    }
+}
+
+.user-actions {
+    div {
+        display: inline;
+        padding-left: 10px;
+    }
+
+    span {
+        padding-left: 10px;
+    }
+
+    .fas {
+        color: $main-color;
+    }
+
+    #user-name {
+        padding: 0;
+    }
+}
+
+/* Content */
+.content-wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
