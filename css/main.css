@@ -117,9 +117,68 @@ h2 {
 .box {
   background: white;
   width: 450px;
-  padding: 50px;
+  padding: 30px 50px 50px 50px;
   border-radius: 7px;
   position: relative;
+}
+
+.ico {
+  display: inline-block;
+  position: absolute;
+}
+
+h4 {
+  color: #272727;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 4px 0 0 0;
+  padding-left: 50px;
+  margin-bottom: 50px;
+}
+
+th {
+  color: #777;
+  text-align: left;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1em 1em;
+}
+
+.table {
+  max-height: 230px;
+  overflow-y: scroll;
+  display: block;
+}
+
+.table::-webkit-scrollbar {
+  width: 3px;
+}
+
+.table::-webkit-scrollbar-track {
+  background: #E3E3E3;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background: #777;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+  background: #26DA6E;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+#table-expenses .item-value {
+  color: #E5604E;
+}
+
+#table-income .item-value {
+  color: #26DA6E;
 }
 
 .box-horizontal {
@@ -128,12 +187,17 @@ h2 {
   background-color: #E93838;
   padding: 50px;
   border-radius: 7px;
+  position: relative;
 }
-
-h4 {
-  color: #272727;
-  font-size: 18px;
-  font-weight: bold;
+.box-horizontal select {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border-radius: 4px;
+  background: none;
+  padding: 5px 10px;
+  border: 1px solid #E3E3E3;
+  color: #777;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -5,6 +5,7 @@ $orange: #E5604E;
 $green: #26DA6E;
 $red: #E93838;
 $blue: #333ADB;
+$gray: #777;
 
 * {
     box-sizing: border-box;
@@ -55,7 +56,7 @@ li a {
 #logo {
     font-size: 14px;
     font-weight: bold;
-    color: #777;
+    color: $gray;
 }
 
 .logo-color {
@@ -85,7 +86,7 @@ li a {
     }
 
     .fas {
-        color: #777;
+        color: $gray;
     }
 
     #user-name {
@@ -126,16 +127,78 @@ h2 {
         background: none;
         padding: 5px 10px;
         border: 1px solid #E3E3E3;
-        color: #777;
+        color: $gray;
     }
 }
 
 .box {
     background: white;
     width: 450px; 
-    padding: 50px;
+    padding: 30px 50px 50px 50px;
     border-radius: 7px; 
     position: relative;
+}
+
+.ico {
+    display: inline-block;
+    position: absolute;
+}
+
+h4 {
+    color: #272727;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 4px 0 0 0;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+th {
+    color: $gray;
+    text-align: left;
+}
+
+table {
+    border-collapse: separate; 
+    border-spacing: 1em 1em;
+}
+
+.table {
+    max-height: 230px;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table::-webkit-scrollbar {
+    width: 3px;
+}
+  
+.table::-webkit-scrollbar-track {
+    background: #E3E3E3; 
+}
+  
+.table::-webkit-scrollbar-thumb {
+    background: $gray; 
+}
+  
+.table::-webkit-scrollbar-thumb:hover {
+    background: $green; 
+}
+.item-name {
+    font-weight: bold;
+}
+
+#table-expenses {
+    .item-value {
+        color: $orange;
+    }
+}
+
+#table-income {
+    .item-value {
+        color: $green;
+    }
 }
 
 .box-horizontal {
@@ -144,10 +207,16 @@ h2 {
     background-color: $red;
     padding: 50px;
     border-radius: 7px; 
-}
+    position: relative;
 
-h4 {
-    color: #272727;
-    font-size: 18px;
-    font-weight: bold;
+    select {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        border-radius: 4px;
+        background: none;
+        padding: 5px 10px;
+        border: 1px solid #E3E3E3;
+        color: $gray;
+    }
 }
