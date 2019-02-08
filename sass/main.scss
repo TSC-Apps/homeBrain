@@ -28,6 +28,22 @@ $light-gray: #E3E3E3;
     background: linear-gradient($value); 
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    background: $light-gray; 
+}
+  
+::-webkit-scrollbar-thumb {
+    background: $gray; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: $green; 
+}
+
 * {
     box-sizing: border-box;
 }
@@ -335,4 +351,16 @@ table {
 #balance-value {
     font-size: 36px;
     font-weight: bold;
+}
+
+.coins-left {
+    position: absolute;
+    left: -30px;
+    bottom: -20px;
+}
+
+.coins-right {
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
 }
