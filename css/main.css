@@ -1,29 +1,3 @@
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #E3E3E3;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #777;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #26DA6E;
-}
-
-::selection {
-  color: white;
-  background: #26DA6E;
-}
-
-::-moz-selection {
-  color: white;
-  background: #26DA6E;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -412,6 +386,33 @@ table {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* Scrollbar and Selection */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E3E3E3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #777;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #26DA6E;
+}
+
+::selection {
+  color: white;
+  background: #26DA6E;
+}
+
+::-moz-selection {
+  color: white;
+  background: #26DA6E;
 }
 
 /*# sourceMappingURL=main.css.map */

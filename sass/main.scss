@@ -1,67 +1,5 @@
-$family: 'Roboto', sans-serif;
-$main-color: #333;
-$orange: #E5604E;
-$green: #26DA6E;
-$red: #E93838;
-$blue: #333ADB;
-$gray: #777;
-$light-gray: #E3E3E3;
-
-@mixin shadow() {
-    -webkit-box-shadow: 0px 4px 25px 6px rgba(0,0,0,0.1); 
-    box-shadow: 0px 4px 25px 6px rgba(0,0,0,0.1);
-}
-
-@mixin select() {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    border-radius: 4px;
-    background: none;
-    padding: 5px 10px;
-    border: 1px solid $light-gray;
-}
-
-@mixin gradient($value) {
-    background: -moz-linear-gradient($value);
-    background: -webkit-linear-gradient($value);
-    background: linear-gradient($value); 
-}
-
-@mixin disableHighlighting() {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none; 
-    user-select: none; 
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-}
-  
-::-webkit-scrollbar-track {
-    background: $light-gray; 
-}
-  
-::-webkit-scrollbar-thumb {
-    background: $gray; 
-}
-  
-::-webkit-scrollbar-thumb:hover {
-    background: $green; 
-}
-  
-::selection {
-    color: white; 
-    background: $green;
-}
-
-::-moz-selection {
-    color: white; 
-    background: $green;
-}
+@import "variables.scss";
+@import "mixins.scss";
 
 * {
     box-sizing: border-box;
@@ -420,4 +358,31 @@ table {
     right: -30px;
     bottom: -20px;
     @include disableHighlighting();
+}
+
+/* Scrollbar and Selection */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    background: $light-gray; 
+}
+  
+::-webkit-scrollbar-thumb {
+    background: $gray; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: $green; 
+}
+  
+::selection {
+    color: white; 
+    background: $green;
+}
+
+::-moz-selection {
+    color: white; 
+    background: $green;
 }
