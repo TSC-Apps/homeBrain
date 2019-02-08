@@ -43,6 +43,16 @@ $light-gray: #E3E3E3;
 ::-webkit-scrollbar-thumb:hover {
     background: $green; 
 }
+  
+::selection {
+    color: white; 
+    background: $green;
+}
+
+::-moz-selection {
+    color: white; 
+    background: $green;
+}
 
 * {
     box-sizing: border-box;
@@ -85,11 +95,19 @@ li a {
     font-weight: bold;
 }
 
+.btn, select {
+    cursor: pointer;
+}
+
 /* Top Bar */
 .top-bar {
     width: 100%;
     height: 50px;
     background-color: white;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .top-bar-wrapper {
@@ -112,14 +130,19 @@ li a {
 }
 
 .top-menu {
+    ul {
+        margin: 0;
+    }
+
     li {
         padding: 0 10px;
         line-height: 50px;
         display: inline-block;
     }
 
-    ul {
-        margin: 0;
+    a:hover {
+        color: $blue;
+        transition: 0.2s all ease-in-out;
     }
 }
 
@@ -246,6 +269,33 @@ table {
     background: $green; 
 }
 
+.btn-add {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    border-radius: 7px;
+    border: 1px solid $main-color;
+    padding: 10px;
+}
+
+.btn-add:hover {
+    background-color: $blue;
+    color: white;
+    border-color: $blue;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.15);
+}
+
+.btn-add:active {
+    background-color: $green;
+    border-color: $green;
+}
+
+.btn-edit:hover, .btn-remove:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
 
 .item-name {
     font-weight: bold;
@@ -286,15 +336,6 @@ table {
     @include gradient((312deg, rgba(229,96,78,1) 0%, rgba(255,127,110,1) 100%));
 }
 
-.btn-add {
-    position: absolute;
-    bottom: 30px;
-    right: 50px;
-    border-radius: 7px;
-    border: 1px solid $main-color;
-    padding: 10px;
-}
-
 .box-sum-income {
     background: $green;
     @include gradient((312deg, rgba(38,218,110,1) 0%, rgba(80,255,150,1) 100%));
@@ -313,6 +354,7 @@ table {
     select {
         @include select();
         color: $light-gray;
+        background: $red;
     }
 
     .title {

@@ -14,6 +14,16 @@
   background: #26DA6E;
 }
 
+::selection {
+  color: white;
+  background: #26DA6E;
+}
+
+::-moz-selection {
+  color: white;
+  background: #26DA6E;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -55,11 +65,18 @@ li a {
   font-weight: bold;
 }
 
+.btn, select {
+  cursor: pointer;
+}
+
 /* Top Bar */
 .top-bar {
   width: 100%;
   height: 50px;
   background-color: white;
+}
+.top-bar a {
+  text-decoration: none;
 }
 
 .top-bar-wrapper {
@@ -81,13 +98,17 @@ li a {
   color: #26DA6E;
 }
 
+.top-menu ul {
+  margin: 0;
+}
 .top-menu li {
   padding: 0 10px;
   line-height: 50px;
   display: inline-block;
 }
-.top-menu ul {
-  margin: 0;
+.top-menu a:hover {
+  color: #333ADB;
+  transition: 0.2s all ease-in-out;
 }
 
 .user-actions div {
@@ -214,6 +235,33 @@ table {
   background: #26DA6E;
 }
 
+.btn-add {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  border-radius: 7px;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.btn-add:hover {
+  background-color: #333ADB;
+  color: white;
+  border-color: #333ADB;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.15);
+}
+
+.btn-add:active {
+  background-color: #26DA6E;
+  border-color: #26DA6E;
+}
+
+.btn-edit:hover, .btn-remove:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
+}
+
 .item-name {
   font-weight: bold;
 }
@@ -251,15 +299,6 @@ table {
   background: linear-gradient(312deg, #e5604e 0%, #ff7f6e 100%);
 }
 
-.btn-add {
-  position: absolute;
-  bottom: 30px;
-  right: 50px;
-  border-radius: 7px;
-  border: 1px solid #333;
-  padding: 10px;
-}
-
 .box-sum-income {
   background: #26DA6E;
   background: -moz-linear-gradient(312deg, #26da6e 0%, #50ff96 100%);
@@ -287,6 +326,7 @@ table {
   padding: 5px 10px;
   border: 1px solid #E3E3E3;
   color: #E3E3E3;
+  background: #E93838;
 }
 .box-horizontal .title {
   color: white;
