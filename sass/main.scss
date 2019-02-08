@@ -1,4 +1,3 @@
-/* Variables */
 $family: 'Roboto', sans-serif;
 $main-color: #333;
 $orange: #E5604E;
@@ -6,11 +5,27 @@ $green: #26DA6E;
 $red: #E93838;
 $blue: #333ADB;
 $gray: #777;
+$light-gray: #E3E3E3;
 
-/* Mixins */
 @mixin shadow() {
     -webkit-box-shadow: 0px 4px 25px 6px rgba(0,0,0,0.1); 
     box-shadow: 0px 4px 25px 6px rgba(0,0,0,0.1);
+}
+
+@mixin select() {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    border-radius: 4px;
+    background: none;
+    padding: 5px 10px;
+    border: 1px solid $light-gray;
+}
+
+@mixin gradient($value) {
+    background: -moz-linear-gradient($value);
+    background: -webkit-linear-gradient($value);
+    background: linear-gradient($value); 
 }
 
 * {
@@ -22,7 +37,17 @@ body {
     font-size: 12px;
     color: $main-color;
     background-color: #F6F6F6;
-    height: 3000px;
+}
+
+.bg-wave {
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg-wave.svg) no-repeat;
+    background-size: cover;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 li {
@@ -31,7 +56,7 @@ li {
 }
 
 li.active {
-    border-bottom: 5px solid #E3E3E3;
+    border-bottom: 5px solid $light-gray;
     height: 50px;
 }
 
@@ -107,8 +132,8 @@ li a {
 }
 
 .content-background {
-    width: 60%;
-    height: 105%;
+    max-width: 1200px;
+    height: 900px;
     margin-top:75px;
     border-radius: 7px;
     border: 1px solid #DEDEDE;
@@ -119,6 +144,7 @@ li a {
     margin-left: auto;
     margin-right: auto;
     z-index: -1;
+    margin-bottom: 100px;
 }
 
 .content-wrapper {
@@ -142,13 +168,7 @@ h2 {
     justify-content: space-between;
 
     select {
-        position: absolute;
-        top: 30px;
-        right: 40px;
-        border-radius: 4px;
-        background: none;
-        padding: 5px 10px;
-        border: 1px solid #E3E3E3;
+        @include select();
         color: $gray;
     }
 }
@@ -173,7 +193,7 @@ h4 {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
-    margin: 4px 0 0 0;
+    margin: 2px 0 0 0;
     padding-left: 50px;
     margin-bottom: 50px;
 }
@@ -199,7 +219,7 @@ table {
 }
   
 .table::-webkit-scrollbar-track {
-    background: #E3E3E3; 
+    background: $light-gray; 
 }
   
 .table::-webkit-scrollbar-thumb {
@@ -247,6 +267,7 @@ table {
 
 .box-sum-expenses {
     background: $orange;
+    @include gradient((312deg, rgba(229,96,78,1) 0%, rgba(255,127,110,1) 100%));
 }
 
 .btn-add {
@@ -260,10 +281,12 @@ table {
 
 .box-sum-income {
     background: $green;
+    @include gradient((312deg, rgba(38,218,110,1) 0%, rgba(80,255,150,1) 100%));
 }
 
 .box-horizontal {
     margin-top: 50px;
+    height: 214px;
     width: 100%;
     background-color: $red;
     padding: 50px;
@@ -272,13 +295,44 @@ table {
     @include shadow();
 
     select {
-        position: absolute;
-        top: 30px;
-        right: 40px;
-        border-radius: 4px;
-        background: none;
-        padding: 5px 10px;
-        border: 1px solid #E3E3E3;
-        color: $gray;
+        @include select();
+        color: $light-gray;
     }
+
+    .title {
+        color: white;
+        position: absolute;
+        top: 29px;
+    }
+}
+
+.box-balance {
+    width: 300px;
+    height: 190px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 7px;
+    background-color: $blue;
+    @include gradient((312deg, rgba(115,54,215,1) 0%, rgba(51,57,219,1) 100%));
+    color: white;
+    
+    .bold {
+        font-size: 14px;
+    }
+
+    @include shadow();
+}
+
+#ico-summary {
+    top: 28px;
+}
+
+#balance-value {
+    font-size: 36px;
+    font-weight: bold;
 }
