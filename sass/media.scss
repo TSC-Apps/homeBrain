@@ -1,0 +1,94 @@
+@import "mixins.scss";
+@import "variables.scss";
+
+@media only screen and (min-width: 320px) and (max-width: 479px){
+    .box {
+        width: 90%;
+        padding: 0;
+    }
+
+    .boxes {
+        .ico {
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+    
+        h4 {
+            margin-top: 35px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .box-horizontal {
+        .ico {
+            margin-top: 5px;
+            margin-left: -32px;
+        }
+    
+        h4 {
+            margin-top: 6px;
+            margin-left: -32px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .box-balance {
+        width: 80%;
+    }
+
+    .btn-add {
+        right: 20px;
+    }
+    
+
+    table {
+        border-collapse: separate; 
+        border-spacing: 0.5em 1em;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    nav {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 904px){
+
+    h2 {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .ico-content {
+        display: none;
+    }
+    
+    .boxes {
+        justify-content: center;
+    }
+
+    .box:nth-of-type(2) {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .box-horizontal {
+        max-width: 90%;
+        margin: 0 auto;
+        height: 270px;
+    }
+
+    .box-balance {
+        top: 100px;
+    }
+
+    .bg-wave, .content-background {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1999px){
+    
+}

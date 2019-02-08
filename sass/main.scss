@@ -121,7 +121,7 @@ li a {
 
 .content-background {
     max-width: 1200px;
-    height: 900px;
+    min-height: 900px;
     margin-top:75px;
     border-radius: 7px;
     border: 1px solid #DEDEDE;
@@ -136,7 +136,7 @@ li a {
 }
 
 .content-wrapper {
-    width: 960px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -155,6 +155,9 @@ h2 {
 .boxes {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
 
     select {
         @include select();
