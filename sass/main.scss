@@ -412,10 +412,12 @@ table {
     position: absolute;
     left: -30px;
     bottom: -20px;
+    @include disableHighlighting();
 }
 
 .coins-right {
     position: absolute;
     right: -30px;
     bottom: -20px;
+    @include disableHighlighting();
 }
