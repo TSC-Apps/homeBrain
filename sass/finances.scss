@@ -1,0 +1,213 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.boxes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+
+    select {
+        @include select();
+        color: $gray;
+    }
+}
+
+.box {
+    background: white;
+    width: 450px; 
+    height: 430px;
+    padding: 30px 50px 50px 50px;
+    border-radius: 7px; 
+    position: relative;
+    @include shadow();
+}
+
+.ico {
+    display: inline-block;
+    position: absolute;
+    @include disableHighlighting();
+}
+
+h4 {
+    color: #272727;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 2px 0 0 0;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+th {
+    color: $gray;
+    text-align: left;
+}
+
+table {
+    border-collapse: separate; 
+    border-spacing: 1em 1em;
+}
+
+.table {
+    max-height: 230px;
+    overflow-y: scroll;
+    display: block;
+}
+
+.table::-webkit-scrollbar {
+    width: 3px;
+}
+  
+.table::-webkit-scrollbar-track {
+    background: $light-gray; 
+}
+  
+.table::-webkit-scrollbar-thumb {
+    background: $gray; 
+}
+  
+.table::-webkit-scrollbar-thumb:hover {
+    background: $green; 
+}
+
+.btn-add {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    border-radius: 7px;
+    border: 1px solid $main-color;
+    padding: 10px;
+}
+
+.btn-add:hover {
+    background-color: $blue;
+    color: white;
+    border-color: $blue;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.15);
+}
+
+.btn-add:active {
+    background-color: $green;
+    border-color: $green;
+}
+
+.btn-edit:hover, .btn-remove:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+
+.item-name {
+    font-weight: bold;
+}
+
+#table-expenses {
+    .item-value {
+        color: $orange;
+    }
+}
+
+#table-income {
+    .item-value {
+        color: $green;
+    }
+}
+
+.box-sum {
+    width: 170px;
+    height: 84px;
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    border-radius: 7px;
+    padding-left: 30px;
+    font-size: 14px;
+    @include shadow();
+
+    .sum-value {
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.box-sum-expenses {
+    background: $orange;
+    @include gradient((312deg, rgba(229,96,78,1) 0%, rgba(255,127,110,1) 100%));
+}
+
+.box-sum-income {
+    background: $green;
+    @include gradient((312deg, rgba(38,218,110,1) 0%, rgba(80,255,150,1) 100%));
+}
+
+.box-horizontal {
+    margin-top: 50px;
+    height: 214px;
+    width: 100%;
+    background-color: $red;
+    padding: 50px;
+    border-radius: 7px; 
+    position: relative;
+    @include shadow();
+
+    select {
+        @include select();
+        color: $light-gray;
+        background: $red;
+    }
+
+    .title {
+        color: white;
+        position: absolute;
+        top: 29px;
+    }
+}
+
+.box-balance {
+    width: 300px;
+    height: 190px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 7px;
+    background-color: $blue;
+    @include gradient((312deg, rgba(115,54,215,1) 0%, rgba(51,57,219,1) 100%));
+    color: white;
+    
+    .bold {
+        font-size: 14px;
+    }
+
+    @include shadow();
+}
+
+#ico-summary {
+    top: 28px;
+}
+
+#balance-value {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.coins-left {
+    position: absolute;
+    left: -30px;
+    bottom: -20px;
+    @include disableHighlighting();
+}
+
+.coins-right {
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    @include disableHighlighting();
+}

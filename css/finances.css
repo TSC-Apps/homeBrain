@@ -1,0 +1,237 @@
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.boxes select {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border-radius: 4px;
+  background: none;
+  padding: 5px 10px;
+  border: 1px solid #E3E3E3;
+  color: #777;
+}
+
+.box {
+  background: white;
+  width: 450px;
+  height: 430px;
+  padding: 30px 50px 50px 50px;
+  border-radius: 7px;
+  position: relative;
+  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ico {
+  display: inline-block;
+  position: absolute;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+h4 {
+  color: #272727;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 2px 0 0 0;
+  padding-left: 50px;
+  margin-bottom: 50px;
+}
+
+th {
+  color: #777;
+  text-align: left;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1em 1em;
+}
+
+.table {
+  max-height: 230px;
+  overflow-y: scroll;
+  display: block;
+}
+
+.table::-webkit-scrollbar {
+  width: 3px;
+}
+
+.table::-webkit-scrollbar-track {
+  background: #E3E3E3;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background: #777;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+  background: #26DA6E;
+}
+
+.btn-add {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  border-radius: 7px;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.btn-add:hover {
+  background-color: #333ADB;
+  color: white;
+  border-color: #333ADB;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.15);
+}
+
+.btn-add:active {
+  background-color: #26DA6E;
+  border-color: #26DA6E;
+}
+
+.btn-edit:hover, .btn-remove:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.2);
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+#table-expenses .item-value {
+  color: #E5604E;
+}
+
+#table-income .item-value {
+  color: #26DA6E;
+}
+
+.box-sum {
+  width: 170px;
+  height: 84px;
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  border-radius: 7px;
+  padding-left: 30px;
+  font-size: 14px;
+  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+}
+.box-sum .sum-value {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.box-sum-expenses {
+  background: #E5604E;
+  background: -moz-linear-gradient(312deg, #e5604e 0%, #ff7f6e 100%);
+  background: -webkit-linear-gradient(312deg, #e5604e 0%, #ff7f6e 100%);
+  background: linear-gradient(312deg, #e5604e 0%, #ff7f6e 100%);
+}
+
+.box-sum-income {
+  background: #26DA6E;
+  background: -moz-linear-gradient(312deg, #26da6e 0%, #50ff96 100%);
+  background: -webkit-linear-gradient(312deg, #26da6e 0%, #50ff96 100%);
+  background: linear-gradient(312deg, #26da6e 0%, #50ff96 100%);
+}
+
+.box-horizontal {
+  margin-top: 50px;
+  height: 214px;
+  width: 100%;
+  background-color: #E93838;
+  padding: 50px;
+  border-radius: 7px;
+  position: relative;
+  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+}
+.box-horizontal select {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border-radius: 4px;
+  background: none;
+  padding: 5px 10px;
+  border: 1px solid #E3E3E3;
+  color: #E3E3E3;
+  background: #E93838;
+}
+.box-horizontal .title {
+  color: white;
+  position: absolute;
+  top: 29px;
+}
+
+.box-balance {
+  width: 300px;
+  height: 190px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 7px;
+  background-color: #333ADB;
+  background: -moz-linear-gradient(312deg, #7336d7 0%, #3339db 100%);
+  background: -webkit-linear-gradient(312deg, #7336d7 0%, #3339db 100%);
+  background: linear-gradient(312deg, #7336d7 0%, #3339db 100%);
+  color: white;
+  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+}
+.box-balance .bold {
+  font-size: 14px;
+}
+
+#ico-summary {
+  top: 28px;
+}
+
+#balance-value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.coins-left {
+  position: absolute;
+  left: -30px;
+  bottom: -20px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.coins-right {
+  position: absolute;
+  right: -30px;
+  bottom: -20px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*# sourceMappingURL=finances.css.map */
