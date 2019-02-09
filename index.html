@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/modal.css">
 
   <!-- FAVICON -->
   <link rel="shortcut icon" href="img/favicon.png" />
@@ -24,7 +25,31 @@
 </head>
 
 <body>
+    
+    <!-- Modal windows -->
+    <div class="modal" id="modal-expenses">
+        <span class="fas fa-times close" id="btn-expenses-close"></span>
+        <h3>Dodaj nowy wydatek</h3>
+        <span class="cancel"></span>
+        <p>Nazwa:</p><input maxlength="10" type="text" id="name">
+        <p>Wartość:</p><input maxlength="10" type="text" id="value">
+        <p>Osoba:</p><input maxlength="10" type="text" id="user">
+        <p>Data:</p><input maxlength="10" type="text" id="date">
+        <div id="btn-add-expenses-final" class="btn btn-add btn-add-final">Dodaj</div>
+    </div>
 
+    <div class="modal" id="modal-income">
+        <span class="fas fa-times close" id="btn-income-close"></span>
+        <h3>Dodaj nowy przychód</h3>
+        <span class="cancel"></span>
+        <p>Nazwa:</p><input maxlength="10" type="text" id="name">
+        <p>Wartość:</p><input maxlength="10" type="text" id="value">
+        <p>Osoba:</p><input maxlength="10" type="text" id="user">
+        <p>Data:</p><input maxlength="10" type="text" id="date">
+        <div id="btn-add-income-final" class="btn btn-add btn-add-final">Dodaj</div>
+    </div>
+
+    
     <div class="top-bar">
         <div class="top-bar-wrapper">
             <a href="index.html"><span id="logo">home<span class="logo-color">Brain</span></span></a>
@@ -48,8 +73,6 @@
             </div>
         </div>
     </div>
-    
-    <div class="content-background"></div>
 
     <div class="content">
         <div class="content-wrapper">
@@ -57,11 +80,9 @@
             <h2 id="title-main">Finanse.</h2>
 
             <div class="boxes">
-
                 <section class="box" id="box-expenses">
                         <img src="img/icon-expenses.svg" class="ico" id="ico-expenses" alt="income icon">
                         <h4 class="title">Wydatki</h4>
-
                     <select class="select-months" id="select-months-expenses">
                         <option value="sty">STY</option>
                         <option value="lut">LUT</option>
@@ -156,7 +177,7 @@
                         <p class="sum-value" id="expenses-sum">-4354,04 zł</p>
                     </div>
 
-                    <div class="btn btn-add">Dodaj</div>
+                    <div class="btn btn-add" id="btn-add-expenses">Dodaj</div>
                 </section>
 
                 <section class="box" id="box-income">
@@ -255,9 +276,8 @@
                         <p class="sum-value" id="income-sum">+4354,04 zł</p>
                     </div>
 
-                    <div class="btn btn-add">Dodaj</div>
+                    <div class="btn btn-add" id="btn-add-income">Dodaj</div>
                 </section>
-
             </div>
 
             <section class="box-horizontal" id="box-summary">
@@ -289,7 +309,12 @@
         </div>
     </div>
 
+
+
     <div class="bg-wave"></div>
+
+    <!-- Scripts -->
+    <script src="js/modal.js"></script>
 </body>
 
 </html>
