@@ -21,6 +21,21 @@ var UIcontroller = (function () {
     };
 
     return {
+        clearInputs: function() {
+            document.querySelector(DOMstrings.inputItemName).value = '';
+            document.querySelector(DOMstrings.inputItemValue).value = '';
+            document.querySelector(DOMstrings.inputItemDate).value = '';
+            document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date()
+        },
+
+        setInitialDate: function() {
+            document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
+        },
+
+        getMonth: function() {
+            return document.querySelector(DOMstrings.selectMonth).value;
+        },
+
         getInputValues: function() {
             return {
                 type: document.querySelector(DOMstrings.selectItemType).value,
@@ -42,6 +57,7 @@ var UIcontroller = (function () {
 var controller = (function (dataCtrl, UICtrl) {
 
     var DOM = UICtrl.getDOMstrings();
+    //var month = UICtrl.getMonth();
 
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
@@ -52,11 +68,13 @@ var controller = (function (dataCtrl, UICtrl) {
     
     document.querySelector(DOM.btnAdd).addEventListener('click', function() {
         var values = UICtrl.getInputValues();
+        UICtrl.clearInputs();
         console.log(values);
     });
 
     return {
         initialize: function() {
+            UICtrl.setInitialDate();
             console.log('App has been initialized.');
         }
     };
