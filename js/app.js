@@ -1,10 +1,7 @@
-// var dataController = (function () {
+var dataController = (function () {
 
 
-//     return {
-
-//     };
-// })();
+})();
 
 
 

@@ -62,6 +62,7 @@ select {
   position: absolute;
   right: 0;
   top: 8px;
+  background-color: #F6F6F6;
 }
 
 .btn {
@@ -153,7 +154,7 @@ input, select:focus {
 #ico-small-menu {
   position: fixed;
   right: 30px;
-  top: 30px;
+  top: 55px;
   color: #333;
   display: none;
   padding: 14px;
@@ -173,15 +174,16 @@ input, select:focus {
 #small-menu {
   z-index: 500;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #333;
   text-align: center;
   font-size: 2em;
   display: none;
 }
 #small-menu ul {
-  margin-top: 10%;
+  margin-top: 20%;
+  padding-left: 0px;
 }
 #small-menu li {
   display: block;
@@ -193,8 +195,8 @@ input, select:focus {
 
 .close {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 52px;
+  top: 68px;
   cursor: pointer;
 }
 
