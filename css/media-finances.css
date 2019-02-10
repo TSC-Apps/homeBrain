@@ -27,10 +27,6 @@
   .box-balance {
     width: 80%;
   }
-
-  .btn-add {
-    right: 20px;
-  }
 }
 @media only screen and (max-width: 904px) {
   .boxes {
