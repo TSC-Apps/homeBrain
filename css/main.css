@@ -111,6 +111,66 @@ li a {
   padding: 0;
 }
 
+#ico-small-menu {
+  position: fixed;
+  right: 30px;
+  top: 60px;
+  color: #333;
+  display: none;
+  padding: 15px;
+  border-radius: 30px;
+  background-color: white;
+  z-index: 200;
+  cursor: pointer;
+}
+
+#ico-small-menu:hover {
+  color: #26DA6E;
+  transition: 0.2s all ease-in-out;
+}
+
+#small-menu {
+  z-index: 300;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  text-align: center;
+  font-size: 2em;
+  display: none;
+}
+#small-menu ul {
+  margin-top: 10%;
+}
+#small-menu li {
+  display: block;
+  margin: 30px 0;
+}
+#small-menu a {
+  color: white;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #E93838;
+  transition: 0.2s all ease-in-out;
+}
+
+#btn-small-menu-close {
+  color: white;
+}
+
+#btn-small-menu-close:hover {
+  color: #E93838;
+  transition: 0.2s all ease-in-out;
+}
+
 /* Content */
 .content {
   margin-top: 50px;

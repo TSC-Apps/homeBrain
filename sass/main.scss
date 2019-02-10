@@ -114,6 +114,69 @@ li a {
     }
 }
 
+#ico-small-menu {
+    position: fixed;
+    right: 30px;
+    top: 60px;
+    color: $main-color;
+    display: none;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: white;
+    z-index: 200;
+    cursor: pointer;
+}
+
+#ico-small-menu:hover {
+    color: $green;
+    transition: 0.2s all ease-in-out;
+}
+
+#small-menu {
+    z-index: 300;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;
+    text-align: center;
+    font-size: 2em;
+    display: none;
+
+    ul {
+        margin-top: 10%;
+    }
+
+    li {
+        display: block;
+        margin: 30px 0;
+    }
+
+    a {
+        color: white;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: $red;
+    transition: 0.2s all ease-in-out;
+}
+
+#btn-small-menu-close {
+    color: white;
+}
+
+#btn-small-menu-close:hover {
+    color: $red;
+    transition: 0.2s all ease-in-out;
+}
+
 /* Content */
 .content {
     margin-top: 50px;

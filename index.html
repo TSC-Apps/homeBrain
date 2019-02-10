@@ -27,6 +27,19 @@
 </head>
 
 <body>
+
+    <i class="fa-2x fas fa-bars" id="ico-small-menu"></i>
+
+    <nav id="small-menu">
+        <span class="fas fa-times close" id="btn-small-menu-close"></span>
+        <ul>
+            <li class="small-menu-li"><a href="#">Finanse</a></li>
+            <li class="small-menu-li"><a href="#">To-Do List</a></li>
+            <li class="small-menu-li"><a href="#">Lista zakupów</a></li>
+            <li class="small-menu-li"><a href="#">Jadłospis</a></li>
+            <li class="small-menu-li"><a href="#">Rezerwacje</a></li>
+        </ul>
+    </nav>
     
     <!-- Modal windows -->
     <div class="modal" id="modal-expenses">
@@ -36,7 +49,7 @@
         <p>Nazwa:</p><input maxlength="10" type="text" id="name">
         <p>Wartość:</p><input maxlength="10" type="text" id="value">
         <p>Osoba:</p><input maxlength="10" type="text" id="user">
-        <p>Data:</p><input maxlength="10" type="text" id="date">
+        <p>Data:</p><input maxlength="10" type="date" id="date">
         <div id="btn-add-expenses-final" class="btn btn-add btn-add-final">Dodaj</div>
     </div>
 
@@ -316,6 +329,7 @@
     <div class="bg-wave"></div>
 
     <!-- Scripts -->
+    <script src="js/main.js"></script>
     <script src="js/modal.js"></script>
 </body>
 

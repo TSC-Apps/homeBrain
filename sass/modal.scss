@@ -9,7 +9,7 @@
     margin-right: auto;
     left: 0;
     right: 0;
-    margin-top: 200px;
+    top: 20%;
     padding: 20px;
     text-align: center;
     border-radius: 7px;
@@ -40,19 +40,6 @@
 #modal-income {
     display: none;
 }
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: $red;
-    transition: 0.2s all ease-in-out;
-}
-
 
 .modal input {
     background: #F6F6F6;
