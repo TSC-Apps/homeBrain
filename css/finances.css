@@ -1,18 +1,40 @@
+#box-settings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: auto;
+  background-color: white;
+  margin-bottom: 50px;
+  position: relative;
+  padding: 10px;
+}
+#box-settings input, #box-settings select, #box-settings .btn {
+  margin: 8px 8px;
+}
+
+.btn-add {
+  border-radius: 7px;
+  border: 1px solid #333;
+}
+
+.btn-add:hover {
+  background-color: #333ADB;
+  color: white;
+  border-color: #333ADB;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.15);
+}
+
+.btn-add:active {
+  background-color: #26DA6E;
+  border-color: #26DA6E;
+}
+
 .boxes {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-}
-.boxes select {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  border-radius: 4px;
-  background: none;
-  padding: 5px 10px;
-  border: 1px solid #E3E3E3;
-  color: #777;
 }
 
 .box {
@@ -54,7 +76,7 @@ th {
 
 table {
   border-collapse: separate;
-  border-spacing: 1em 1em;
+  border-spacing: 0.5em 0.3em;
 }
 
 .table {
@@ -77,28 +99,6 @@ table {
 
 .table::-webkit-scrollbar-thumb:hover {
   background: #26DA6E;
-}
-
-.btn-add {
-  position: absolute;
-  bottom: 30px;
-  right: 50px;
-  border-radius: 7px;
-  border: 1px solid #333;
-  padding: 10px;
-}
-
-.btn-add:hover {
-  background-color: #333ADB;
-  color: white;
-  border-color: #333ADB;
-  transition: all 0.2s ease-in-out;
-  transform: scale(1.15);
-}
-
-.btn-add:active {
-  background-color: #26DA6E;
-  border-color: #26DA6E;
 }
 
 .btn-edit:hover, .btn-remove:hover {
@@ -152,30 +152,22 @@ table {
 
 .box-horizontal {
   margin-top: 50px;
-  height: 214px;
   width: 100%;
-  background-color: #E93838;
-  padding: 50px;
   border-radius: 7px;
   position: relative;
   -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
 }
-.box-horizontal select {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  border-radius: 4px;
-  background: none;
-  padding: 5px 10px;
-  border: 1px solid #E3E3E3;
-  color: #E3E3E3;
-  background: #E93838;
-}
 .box-horizontal .title {
   color: white;
   position: absolute;
   top: 29px;
+}
+
+#box-summary {
+  height: 180px;
+  background-color: #E93838;
+  padding: 50px;
 }
 
 .box-balance {

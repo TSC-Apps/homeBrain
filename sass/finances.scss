@@ -1,17 +1,48 @@
 @import "variables.scss";
 @import "mixins.scss";
 
+//=========================
+// Settings
+#box-settings {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: auto;
+    background-color: white;
+    margin-bottom: 50px;
+    position: relative;
+    padding: 10px;
+
+    input, select, .btn {
+        margin: 8px 8px;
+    }
+}
+
+.btn-add {
+    border-radius: 7px;
+    border: 1px solid $main-color;
+}
+
+.btn-add:hover {
+    background-color: $blue;
+    color: white;
+    border-color: $blue;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.15);
+}
+
+.btn-add:active {
+    background-color: $green;
+    border-color: $green;
+}
+
+//=====================
+// Boxes
 .boxes {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-
-
-    select {
-        @include select();
-        color: $gray;
-    }
 }
 
 .box {
@@ -47,7 +78,7 @@ th {
 
 table {
     border-collapse: separate; 
-    border-spacing: 1em 1em;
+    border-spacing: 0.5em 0.3em;
 }
 
 .table {
@@ -72,33 +103,10 @@ table {
     background: $green; 
 }
 
-.btn-add {
-    position: absolute;
-    bottom: 30px;
-    right: 50px;
-    border-radius: 7px;
-    border: 1px solid $main-color;
-    padding: 10px;
-}
-
-.btn-add:hover {
-    background-color: $blue;
-    color: white;
-    border-color: $blue;
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.15);
-}
-
-.btn-add:active {
-    background-color: $green;
-    border-color: $green;
-}
-
 .btn-edit:hover, .btn-remove:hover {
     transition: all 0.2s ease-in-out;
     transform: scale(1.2);
 }
-
 
 .item-name {
     font-weight: bold;
@@ -146,25 +154,25 @@ table {
 
 .box-horizontal {
     margin-top: 50px;
-    height: 214px;
     width: 100%;
-    background-color: $red;
-    padding: 50px;
     border-radius: 7px; 
     position: relative;
     @include shadow();
-
-    select {
-        @include select();
-        color: $light-gray;
-        background: $red;
-    }
 
     .title {
         color: white;
         position: absolute;
         top: 29px;
     }
+}
+
+
+//======================
+// Summary
+#box-summary {
+    height: 180px;
+    background-color: $red;
+    padding: 50px;
 }
 
 .box-balance {

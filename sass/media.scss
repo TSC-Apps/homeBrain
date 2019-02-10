@@ -4,7 +4,7 @@
 @media only screen and (min-width: 320px) and (max-width: 479px){
     table {
         border-collapse: separate; 
-        border-spacing: 0.5em 1em;
+        border-spacing: 0.1em 0.1em;
     }
 }
 
@@ -16,16 +16,23 @@
     #ico-small-menu {
         display: block;
     }
+
+    table {
+        border-spacing: 0.5em 0.5em;
+    }
 }
 
 @media only screen and (max-width: 904px){
     h2 {
-        text-align: center;
-        margin-left: 0;
+        padding-left: 30px;
+    }
+
+    .select-months {
+        right: 40px;
     }
 
     .ico-content {
-        display: none;
+        margin-left: 40px;
     }
     
     .bg-wave {

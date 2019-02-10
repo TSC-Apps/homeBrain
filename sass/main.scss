@@ -47,6 +47,41 @@ li a {
     @include disableHighlighting();
 }
 
+select {
+    border-radius: 7px;
+    border: 1px solid $main-color;
+    background-color: white;
+    line-height: 34px;
+    padding: 0 10px;
+    height: 34px;
+}
+
+.select-months {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.btn {
+    padding: 10px;
+    height: 34px;
+}
+
+input {
+    background-color: $light-gray;
+    color: $gray;
+    height: 30px;
+    border: none;
+    border-radius: 7px;
+    line-height: 34px;
+    padding: 0 10px;
+    height: 34px;
+}
+
+input, select:focus {
+    outline: none;
+}
+
 /* Top Bar */
 .top-bar {
     width: 100%;
@@ -185,6 +220,7 @@ li a {
 .content-wrapper {
     max-width: 960px;
     margin: 0 auto;
+    position: relative;
 }
 
 .ico-content {
