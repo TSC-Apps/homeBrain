@@ -59,6 +59,9 @@ var controller = (function (dataCtrl, UICtrl) {
     var DOM = UICtrl.getDOMstrings();
     //var month = UICtrl.getMonth();
 
+    var expenses = [];
+    var income = [];
+
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
     }
@@ -69,13 +72,25 @@ var controller = (function (dataCtrl, UICtrl) {
     document.querySelector(DOM.btnAdd).addEventListener('click', function() {
         var values = UICtrl.getInputValues();
         UICtrl.clearInputs();
-        console.log(values);
+        if(values.type === 'expense') {
+            expenses.push(values);
+        } else {
+            income.push(values);
+        }
     });
 
     return {
         initialize: function() {
             UICtrl.setInitialDate();
             console.log('App has been initialized.');
+        },
+
+        getIncome: function() {
+            return income;
+        },
+
+        getExpenses: function() {
+            return expenses;
         }
     };
 })(dataController, UIcontroller);
