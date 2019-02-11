@@ -25,7 +25,7 @@ var UIcontroller = (function () {
             document.querySelector(DOMstrings.inputItemName).value = '';
             document.querySelector(DOMstrings.inputItemValue).value = '';
             document.querySelector(DOMstrings.inputItemDate).value = '';
-            document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date()
+            document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
         },
 
         setInitialDate: function() {
