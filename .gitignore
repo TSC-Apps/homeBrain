@@ -6,3 +6,7 @@ css/mixins\.css\.map
 css/variables\.css
 
 css/variables\.css\.map
+
+.idea/
+__pycache__/
+venv/

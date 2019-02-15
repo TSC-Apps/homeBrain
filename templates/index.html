@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block body %}
+     <!-- Od tego miejsca content zależny od podstrony-->
+
+    <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
+    <h2 id="title-main">Finanse.</h2>
+
+    <select class="select-months">
+        <option value="sty">STY</option>
+        <option value="lut">LUT</option>
+        <option value="mar">MAR</option>
+        <option value="kwi">KWI</option>
+        <option value="maj">MAJ</option>
+        <option value="cze">CZE</option>
+        <option value="lip">LIP</option>
+        <option value="sie">SIE</option>
+        <option value="wrz">WRZ</option>
+        <option value="paz">PAZ</option>
+        <option value="lis">LIS</option>
+        <option value="gru">GRU</option>
+    </select>
+
+    <section class="box-horizontal" id="box-settings">
+
+        <select class="select-type">
+            <option value="expense">Wydatek</option>
+            <option value="income">Przychód</option>
+        </select>
+        <input maxlength="10" type="text" id="name" placeholder="Nazwa">
+        <input maxlength="10" type="text" id="value" placeholder="Wartość">
+        <input maxlength="10" type="date" id="date">
+        <div class="btn btn-add">Dodaj</div>
+    </section>
+
+    <div class="boxes">
+        <section class="box" id="box-expenses">
+            <img src="../static/img/icon-expenses.svg" class="ico" id="ico-expenses" alt="income icon">
+            <h4 class="title">Wydatki</h4>
+
+            <div class="table">
+                <table id="table-expenses">
+                    <tr class="table-header">
+                        <th></th>
+                        <th>nazwa</th>
+                        <th>wartość</th>
+                        <th>osoba</th>
+                        <th>data</th>
+                    </tr>
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        <td class="table-item item-name">Warzywka</td>
+                        <td class="table-item item-value">-325 zł</td>
+                        <td class="table-item">Szymon</td>
+                        <td class="table-item">07.01.2018</td>
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="box-sum box-sum-expenses">
+                <p>Suma:</p>
+                <p class="sum-value" id="expenses-sum">-4354,04 zł</p>
+            </div>
+        </section>
+
+        <section class="box" id="box-income">
+            <img src="../static/img/icon-income.svg" class="ico" id="ico-income" alt="income icon">
+            <h4 class="title">Przychody</h4>
+
+            <table class="table" id="table-income">
+                <tr class="table-header">
+                    <th></th>
+                    <th>nazwa</th>
+                    <th>wartość</th>
+                    <th>osoba</th>
+                    <th>data</th>
+                </tr>
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+
+                <tr class="table-row">
+                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                    <td class="table-item item-name">Warzywka</td>
+                    <td class="table-item item-value">+325 zł</td>
+                    <td class="table-item">Szymon</td>
+                    <td class="table-item">07.01.2018</td>
+                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                </tr>
+            </table>
+
+            <div class="box-sum box-sum-income">
+                <p>Suma:</p>
+                <p class="sum-value" id="income-sum">+4354,04 zł</p>
+            </div>
+
+        </section>
+    </div>
+
+    <section class="box-horizontal" id="box-summary">
+        <img src="../static/img/icon-summary.svg" class="ico" id="ico-summary" alt="summary icon">
+        <h4 class="title">Podsumowanie</h4>
+
+        <div class="box-balance">
+            <p class="bold">Bilans:</p>
+            <p id="balance-value">-3954 zł</p>
+            <p id="balance-conclusion">czyli <span class="balance-less-value bold">501 zł</span> mniej niż w <span
+                    class="balance-month bold">październiku</span>.</p>
+            <img src="../static/img/coins-left.svg" class="coins-left" alt="">
+            <img src="../static/img/coins-right.svg" class="coins-right" alt="">
+        </div>
+    </section>
+
+    <!-- Do tego miejsca content zależny od podstrony-->
+{% endblock %}
