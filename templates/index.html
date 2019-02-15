@@ -22,15 +22,18 @@
     </select>
 
     <section class="box-horizontal" id="box-settings">
-
-        <select class="select-type">
-            <option value="expense">Wydatek</option>
-            <option value="income">Przychód</option>
-        </select>
+    <form method="POST" action="">
+{#        <select class="select-type">#}
+{#            <option value="expense">Wydatek</option>#}
+{#            <option value="income">Przychód</option>#}
+{#        </select>#}
+        <input maxlength="10" type="text" id="select-type" placeholder="Kategoria">
         <input maxlength="10" type="text" id="name" placeholder="Nazwa">
-        <input maxlength="10" type="text" id="value" placeholder="Wartość">
+        <input maxlength="10" type="number" id="value" placeholder="Wartość">
         <input maxlength="10" type="date" id="date">
-        <div class="btn btn-add">Dodaj</div>
+{#        <div class="btn btn-add">Dodaj</div>#}
+        <input type="submit" value="Dodaj">
+    </form>
     </section>
 
     <div class="boxes">
