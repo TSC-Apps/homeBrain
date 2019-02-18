@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from DBcm import UseDatabase
 
 import mysql.connector
@@ -10,19 +10,22 @@ app = Flask(__name__)
 # hasło: #W4lepsze
 # tabela: bilance
 
+app.debug = True
 dbconfig = {'host': '127.0.0.1',
             'user': 'homeBrain',
             'password': '#W4lepsze',
             'database': 'homeBrainDB'}
 
 
-def bilance_requst(req: 'flask_request'):
+@app.route('/post_item', methods=['POST'])
+def post_item():
     with UseDatabase(dbconfig) as cursor:
         _SQL = """insert into bilance
                 (category, name, value, date)
                 values 
-                (%s, %s, %d, %s)"""
-    cursor.execute(_SQL, req.form['select-type'], req.form['name'], req.form['value'], req.form['date'])
+                (%s, %s, %s, %s)"""
+        cursor.execute(_SQL, (request.form['select-type'], request.form['name'], request.form['value'], request.form['date']))
+    return redirect(url_for('index'))
 
 @app.route('/')
 def index():
