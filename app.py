@@ -24,10 +24,6 @@ def post_item():
     return redirect(url_for('index'))
 
 
-# @app.route('/show_table', methods=['GET'])
-# def show_table():
-
-
 @app.route('/')
 def index():
     with UseDatabase(dbconfig) as cursor:
@@ -46,8 +42,10 @@ def index():
         _SQL = """select sum(value) from bilance where category='Przychod'"""
         cursor.execute(_SQL)
         sum_incomes = cursor.fetchone()
+
+        bilance = sum_incomes[0] - sum_expenses[0]
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
-                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0])
+                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil = bilance)
 
 
 @app.route('/login')
