@@ -24,10 +24,13 @@
     <section class="box-horizontal" id="box-settings">
     <form method="POST" action="/post_item">
         <select class="select-type" name="select-type">
-            <option value="expense">Wydatek</option>
-            <option value="income">Przychód</option>
+            <option value="Wydatek">Wydatek</option>
+            <option value="Przychod">Przychód</option>
         </select>
-{#        <input maxlength="10" type="text" id="select-type" name="select-type" placeholder="Kategoria">#}
+        <select class="select-type" name="select-person">
+            <option value="Tymek">Tymek</option>
+            <option value="Szymon">Szymon</option>
+        </select>
         <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
         <input maxlength="10" type="number" id="value" name="value" placeholder="Wartość">
         <input maxlength="10" type="date" id="date" name="date">
@@ -59,59 +62,6 @@
                         <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                     </tr>
 
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
                 </table>
             </div>
 
