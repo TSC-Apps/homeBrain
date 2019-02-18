@@ -24,19 +24,30 @@ def post_item():
     return redirect(url_for('index'))
 
 
-# @app.route('show_table', methods=['GET'])
+# @app.route('/show_table', methods=['GET'])
 # def show_table():
-# pass
-# with UseDatabase(app.config['dbconfig']) as cursor:
-#     _SQL = """select name, value, date, results from log"""
-#     cursor.execute(_SQL)
-#     contents = cursor.fetchall()
-# return render_template('index.html', the_data=contents)
+
 
 @app.route('/')
 def index():
-    # bilance_requst()
-    return render_template('index.html')
+    with UseDatabase(dbconfig) as cursor:
+        _SQL = """select name, value, person, date from bilance where category='Wydatek'"""
+        cursor.execute(_SQL)
+        contents_expenses = cursor.fetchall()
+
+        _SQL = """select name, value, person, date from bilance where category='Przychod'"""
+        cursor.execute(_SQL)
+        contents_incomes = cursor.fetchall()
+
+        _SQL = """select sum(value) from bilance where category='Wydatek'"""
+        cursor.execute(_SQL)
+        sum_expenses = cursor.fetchone()
+
+        _SQL = """select sum(value) from bilance where category='Przychod'"""
+        cursor.execute(_SQL)
+        sum_incomes = cursor.fetchone()
+    return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
+                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0])
 
 
 @app.route('/login')

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-     <!-- Od tego miejsca content zależny od podstrony-->
+    <!-- Od tego miejsca content zależny od podstrony-->
 
     <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
     <h2 id="title-main">Finanse.</h2>
@@ -22,21 +22,21 @@
     </select>
 
     <section class="box-horizontal" id="box-settings">
-    <form method="POST" action="/post_item">
-        <select class="select-type" name="select-type">
-            <option value="Wydatek">Wydatek</option>
-            <option value="Przychod">Przychód</option>
-        </select>
-        <select class="select-type" name="select-person">
-            <option value="Tymek">Tymek</option>
-            <option value="Szymon">Szymon</option>
-        </select>
-        <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
-        <input maxlength="10" type="number" id="value" name="value" placeholder="Wartość">
-        <input maxlength="10" type="date" id="date" name="date">
-{#        <div class="btn btn-add">Dodaj</div>#}
-        <input type="submit" value="Dodaj">
-    </form>
+        <form method="POST" action="/post_item">
+            <select class="select-type" name="select-type">
+                <option value="Wydatek">Wydatek</option>
+                <option value="Przychod">Przychód</option>
+            </select>
+            <select class="select-type" name="select-person">
+                <option value="Tymek">Tymek</option>
+                <option value="Szymon">Szymon</option>
+            </select>
+            <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
+            <input maxlength="10" type="number" id="value" name="value" placeholder="Wartość">
+            <input maxlength="10" type="date" id="date" name="date">
+            {#        <div class="btn btn-add">Dodaj</div>#}
+            <input type="submit" value="Dodaj">
+        </form>
     </section>
 
     <div class="boxes">
@@ -53,21 +53,21 @@
                         <th>osoba</th>
                         <th>data</th>
                     </tr>
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        <td class="table-item item-name">Warzywka</td>
-                        <td class="table-item item-value">-325 zł</td>
-                        <td class="table-item">Szymon</td>
-                        <td class="table-item">07.01.2018</td>
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-
+                    {% for bilance_row in the_data_expenses %}
+                        <tr class="table-row">
+                            <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                            {% for item in bilance_row %}
+                                <td class="table-item">{{ item }}</td>
+                            {% endfor %}
+                            <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                        </tr>
+                    {% endfor %}
                 </table>
             </div>
 
             <div class="box-sum box-sum-expenses">
                 <p>Suma:</p>
-                <p class="sum-value" id="expenses-sum">-4354,04 zł</p>
+                <p class="sum-value" id="expenses-sum">{{ sum_exp }}</p>
             </div>
         </section>
 
@@ -83,73 +83,20 @@
                     <th>osoba</th>
                     <th>data</th>
                 </tr>
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
-
-                <tr class="table-row">
-                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                    <td class="table-item item-name">Warzywka</td>
-                    <td class="table-item item-value">+325 zł</td>
-                    <td class="table-item">Szymon</td>
-                    <td class="table-item">07.01.2018</td>
-                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                </tr>
+                {% for bilance_row in the_data_incomes %}
+                    <tr class="table-row">
+                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                        {% for item in bilance_row %}
+                            <td class="table-item">{{ item }}</td>
+                        {% endfor %}
+                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                    </tr>
+                {% endfor %}
             </table>
 
             <div class="box-sum box-sum-income">
                 <p>Suma:</p>
-                <p class="sum-value" id="income-sum">+4354,04 zł</p>
+                <p class="sum-value" id="income-sum">{{ sum_inc }}</p>
             </div>
 
         </section>
