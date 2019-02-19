@@ -48,11 +48,9 @@
             <div class="table">
                 <table id="table-expenses">
                     <tr class="table-header">
-                        <th></th>
-                        <th>nazwa</th>
-                        <th>wartość</th>
-                        <th>osoba</th>
-                        <th>data</th>
+                        {% for header in header_content %}
+                            <th>{{ header }}</th>
+                        {% endfor %}
                     </tr>
                     {% for bilance_row in the_data_expenses %}
                         <tr class="table-row">
@@ -78,11 +76,9 @@
 
             <table class="table" id="table-income">
                 <tr class="table-header">
-                    <th></th>
-                    <th>nazwa</th>
-                    <th>wartość</th>
-                    <th>osoba</th>
-                    <th>data</th>
+                    {% for header in header_content %}
+                            <th>{{ header }}</th>
+                    {% endfor %}
                 </tr>
                 {% for bilance_row in the_data_incomes %}
                     <tr class="table-row">

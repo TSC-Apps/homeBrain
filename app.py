@@ -47,11 +47,18 @@ def index():
         sum_incomes = cursor.fetchone()
 
         bilance = 0
-        if sum_incomes[0] is not None and sum_expenses is not None:
+        if sum_incomes[0] is not None and sum_expenses[0] is not None:
             bilance = sum_incomes[0] - sum_expenses[0]
+        elif sum_incomes[0] is None and sum_expenses[0] is not None:
+            bilance = 0 - sum_expenses[0]
+        elif sum_incomes[0] is not None and sum_expenses[0] is None:
+            bilance = sum_incomes[0]
+
+        header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
-                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil=bilance)
+                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil=bilance,
+                           header_content=header_content)
 
 
 @app.route('/login')
