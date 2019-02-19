@@ -5,11 +5,12 @@
 
 
     <section class="box-login">
-
-        <input type="text" id="login-name" placeholder="Nazwa">
-        <input type="password" id="login-password" placeholder="Hasło">
-        <div class="btn btn-login">Zaloguj</div>
-        <div class="forgot-pwd"><a href="lost-password.html">Zgubione hasło</a></div>
+        <form method="GET POST" action="/login">
+            <input type="text" id="login-name" name="login" placeholder="Nazwa">
+            <input type="password" id="login-password" name="password" placeholder="Hasło">
+            <div class="btn btn-login">Zaloguj</div>
+            <div class="forgot-pwd"><a href="lost-password.html">Zgubione hasło</a></div>
+        </form>
     </section>
 
 {% endblock %}

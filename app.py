@@ -14,7 +14,7 @@ dbconfig = {'host': '127.0.0.1',
 def post_item():
     with UseDatabase(dbconfig) as cursor:
         _SQL = """insert into bilance
-                (category, name, value, person, day, month, year, date)
+                (category, name, person, day, month, year, date, value)
                 values 
                 (%s, %s, %s, %s, %s, %s, %s, %s)"""
         date = request.form['date'].split('-')
@@ -22,8 +22,9 @@ def post_item():
             year = date[0]
             month = date[1]
             day = date[2]
-        cursor.execute(_SQL, (request.form['select-type'], request.form['name'], request.form['value'],
-                              request.form['select-person'], day, month, year, request.form['date']))
+        cursor.execute(_SQL, (request.form['select-type'], request.form['name'],
+                              request.form['select-person'], day, month, year, request.form['date'],
+                              request.form['value']))
     return redirect(url_for('index'))
 
 
@@ -61,8 +62,17 @@ def index():
                            header_content=header_content)
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password_candidate = request.form['password']
+
+        with UseDatabase as cursor:
+            _SQL = """select * from users where name = (%s)"""
+            cursor.execute(_SQL, [username])
+            result = cursor.fetchone()
+
     return render_template('login.html')
 
 
