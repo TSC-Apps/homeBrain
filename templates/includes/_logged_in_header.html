@@ -27,10 +27,10 @@
 
         <div class="user-actions">
             Witaj,
-            <span id="user-name">{{ current_user }}</span>!
+            <span id="user-name">{{ session.username }}</span>
             <span class="fas fa-user" id="ico-user"></span>
             <span class="fas fa-cog" id="ico-settings"></span>
-            <div id="btn-log-out">wyloguj</div>
+            <div id="btn-log-out"><a href="/logout">Wyloguj</a> </div>
         </div>
     </div>
 </div>

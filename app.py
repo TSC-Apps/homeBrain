@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from DBcm import UseDatabase
+from checker import check_logged_in
 
 app = Flask(__name__)
 
@@ -30,6 +31,7 @@ def post_item():
 
 
 @app.route('/')
+@check_logged_in
 def index():
     with UseDatabase(dbconfig) as cursor:
         _SQL = """select name, value, person, date from bilance where category='Wydatek'"""
@@ -60,7 +62,7 @@ def index():
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
                            sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil=bilance,
-                           header_content=header_content, current_user=session['username'])
+                           header_content=header_content)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -74,11 +76,12 @@ def login():
             cursor.execute(_SQL, [username])
             result = cursor.fetchone()
 
-            # TODO sha256
+            # TODO sha256 encrypting
             if result is not None:
                 if password_candidate == result[0]:
                     session['logged_in'] = True
                     session['username'] = username
+                    print('Zalogowano')
                     return redirect(url_for('index'))
                 else:
                     return render_template('login.html')
@@ -86,6 +89,12 @@ def login():
                 return render_template('login.html')
 
     return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 
 if __name__ == '__main__':
