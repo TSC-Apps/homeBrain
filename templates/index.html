@@ -1,117 +1,126 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
+    {% include 'includes/_logged_in_header.html' %}
+
     <!-- Od tego miejsca content zależny od podstrony-->
+    <div class="content">
+        <div class="content-wrapper">
 
-    <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
-    <h2 id="title-main">Finanse.</h2>
-    <select class="select-months" name="select-months">
-        <form method="GET" action="/">
-            <option value="1">STY</option>
-            <option value="2">LUT</option>
-            <option value="3">MAR</option>
-            <option value="4">KWI</option>
-            <option value="5">MAJ</option>
-            <option value="6">CZE</option>
-            <option value="7">LIP</option>
-            <option value="8">SIE</option>
-            <option value="9">WRZ</option>
-            <option value="10">PAZ</option>
-            <option value="11">LIS</option>
-            <option value="12">GRU</option>
-        </form>
-    </select>
-
-    <section class="box-horizontal" id="box-settings">
-        <form method="POST" action="/post_item">
-            <select class="select-type" name="select-type">
-                <option value="Wydatek">Wydatek</option>
-                <option value="Przychod">Przychód</option>
+            <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
+            <h2 id="title-main">Finanse.</h2>
+            <select class="select-months" name="select-months">
+                <form method="GET" action="/">
+                    <option value="1">STY</option>
+                    <option value="2">LUT</option>
+                    <option value="3">MAR</option>
+                    <option value="4">KWI</option>
+                    <option value="5">MAJ</option>
+                    <option value="6">CZE</option>
+                    <option value="7">LIP</option>
+                    <option value="8">SIE</option>
+                    <option value="9">WRZ</option>
+                    <option value="10">PAZ</option>
+                    <option value="11">LIS</option>
+                    <option value="12">GRU</option>
+                </form>
             </select>
-            <select class="select-type" name="select-person">
-                <option value="Tymek">Tymek</option>
-                <option value="Szymon">Szymon</option>
-            </select>
-            <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
-            <input maxlength="10" type="number" id="value" name="value" placeholder="Wartość">
-            <input maxlength="10" type="date" id="date" name="date">
-            {#        <div class="btn btn-add">Dodaj</div>#}
-            <input type="submit" value="Dodaj">
-        </form>
-    </section>
 
-    <div class="boxes">
-        <section class="box" id="box-expenses">
-            <img src="../static/img/icon-expenses.svg" class="ico" id="ico-expenses" alt="income icon">
-            <h4 class="title">Wydatki</h4>
+            <section class="box-horizontal" id="box-settings">
+                <form method="POST" action="/post_item">
+                    <select class="select-type" name="select-type">
+                        <option value="Wydatek">Wydatek</option>
+                        <option value="Przychod">Przychód</option>
+                    </select>
+                    <select class="select-type" name="select-person">
+                        <option value="Tymek">Tymek</option>
+                        <option value="Szymon">Szymon</option>
+                    </select>
+                    <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
+                    <input maxlength="10" type="number" id="value" name="value" placeholder="Wartość">
+                    <input maxlength="10" type="date" id="date" name="date">
+                    {#        <div class="btn btn-add">Dodaj</div>#}
+                    <input type="submit" value="Dodaj">
+                </form>
+            </section>
 
-            <div class="table">
-                <table id="table-expenses">
-                    <tr class="table-header">
-                        {% for header in header_content %}
-                            <th>{{ header }}</th>
-                        {% endfor %}
-                    </tr>
-                    {% for bilance_row in the_data_expenses %}
-                        <tr class="table-row">
-                            <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                            {% for item in bilance_row %}
-                                <td class="table-item">{{ item }}</td>
+            <div class="boxes">
+                <section class="box" id="box-expenses">
+                    <img src="../static/img/icon-expenses.svg" class="ico" id="ico-expenses" alt="income icon">
+                    <h4 class="title">Wydatki</h4>
+
+                    <div class="table">
+                        <table id="table-expenses">
+                            <tr class="table-header">
+                                {% for header in header_content %}
+                                    <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for bilance_row in the_data_expenses %}
+                                <tr class="table-row">
+                                    <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove">
+                                    </td>
+                                    {% for item in bilance_row %}
+                                        <td class="table-item">{{ item }}</td>
+                                    {% endfor %}
+                                    <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                                </tr>
                             {% endfor %}
-                            <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                        </table>
+                    </div>
+
+                    <div class="box-sum box-sum-expenses">
+                        <p>Suma:</p>
+                        <p class="sum-value" id="expenses-sum">{{ sum_exp }}</p>
+                    </div>
+                </section>
+
+                <section class="box" id="box-income">
+                    <img src="../static/img/icon-income.svg" class="ico" id="ico-income" alt="income icon">
+                    <h4 class="title">Przychody</h4>
+
+                    <table class="table" id="table-income">
+                        <tr class="table-header">
+                            {% for header in header_content %}
+                                <th>{{ header }}</th>
+                            {% endfor %}
                         </tr>
-                    {% endfor %}
-                </table>
-            </div>
-
-            <div class="box-sum box-sum-expenses">
-                <p>Suma:</p>
-                <p class="sum-value" id="expenses-sum">{{ sum_exp }}</p>
-            </div>
-        </section>
-
-        <section class="box" id="box-income">
-            <img src="../static/img/icon-income.svg" class="ico" id="ico-income" alt="income icon">
-            <h4 class="title">Przychody</h4>
-
-            <table class="table" id="table-income">
-                <tr class="table-header">
-                    {% for header in header_content %}
-                            <th>{{ header }}</th>
-                    {% endfor %}
-                </tr>
-                {% for bilance_row in the_data_incomes %}
-                    <tr class="table-row">
-                        <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                        {% for item in bilance_row %}
-                            <td class="table-item">{{ item }}</td>
+                        {% for bilance_row in the_data_incomes %}
+                            <tr class="table-row">
+                                <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
+                                {% for item in bilance_row %}
+                                    <td class="table-item">{{ item }}</td>
+                                {% endfor %}
+                                <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
+                            </tr>
                         {% endfor %}
-                        <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
-                    </tr>
-                {% endfor %}
-            </table>
+                    </table>
 
-            <div class="box-sum box-sum-income">
-                <p>Suma:</p>
-                <p class="sum-value" id="income-sum">{{ sum_inc }}</p>
+                    <div class="box-sum box-sum-income">
+                        <p>Suma:</p>
+                        <p class="sum-value" id="income-sum">{{ sum_inc }}</p>
+                    </div>
+
+                </section>
             </div>
 
-        </section>
-    </div>
+            <section class="box-horizontal" id="box-summary">
+                <img src="../static/img/icon-summary.svg" class="ico" id="ico-summary" alt="summary icon">
+                <h4 class="title">Podsumowanie</h4>
 
-    <section class="box-horizontal" id="box-summary">
-        <img src="../static/img/icon-summary.svg" class="ico" id="ico-summary" alt="summary icon">
-        <h4 class="title">Podsumowanie</h4>
+                <div class="box-balance">
+                    <p class="bold">Bilans:</p>
+                    <p id="balance-value">{{ final_bil }}</p>
+                    <p id="balance-conclusion">czyli <span class="balance-less-value bold">501 zł</span> mniej niż w
+                        <span
+                                class="balance-month bold">październiku</span>.</p>
+                    <img src="../static/img/coins-left.svg" class="coins-left" alt="">
+                    <img src="../static/img/coins-right.svg" class="coins-right" alt="">
+                </div>
+            </section>
 
-        <div class="box-balance">
-            <p class="bold">Bilans:</p>
-            <p id="balance-value">{{ final_bil }}</p>
-            <p id="balance-conclusion">czyli <span class="balance-less-value bold">501 zł</span> mniej niż w <span
-                    class="balance-month bold">październiku</span>.</p>
-            <img src="../static/img/coins-left.svg" class="coins-left" alt="">
-            <img src="../static/img/coins-right.svg" class="coins-right" alt="">
         </div>
-    </section>
-
+    </div>
     <!-- Do tego miejsca content zależny od podstrony-->
 {% endblock %}

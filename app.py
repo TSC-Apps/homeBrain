@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from DBcm import UseDatabase
 
 app = Flask(__name__)
@@ -8,6 +8,7 @@ dbconfig = {'host': '127.0.0.1',
             'user': 'homeBrain',
             'password': '#W4lepsze',
             'database': 'homeBrainDB'}
+app.secret_key = 'w4lepsze'
 
 
 @app.route('/post_item', methods=['POST'])
@@ -59,7 +60,7 @@ def index():
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
                            sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil=bilance,
-                           header_content=header_content)
+                           header_content=header_content, current_user=session['username'])
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,10 +69,21 @@ def login():
         username = request.form['username']
         password_candidate = request.form['password']
 
-        with UseDatabase as cursor:
-            _SQL = """select * from users where name = (%s)"""
+        with UseDatabase(dbconfig) as cursor:
+            _SQL = """select password from users where name = (%s)"""
             cursor.execute(_SQL, [username])
             result = cursor.fetchone()
+
+            # TODO sha256
+            if result is not None:
+                if password_candidate == result[0]:
+                    session['logged_in'] = True
+                    session['username'] = username
+                    return redirect(url_for('index'))
+                else:
+                    return render_template('login.html')
+            else:
+                return render_template('login.html')
 
     return render_template('login.html')
 

@@ -1,0 +1,36 @@
+<i class="fa-2x fas fa-bars" id="ico-small-menu"></i>
+
+<nav id="small-menu">
+    <span class="fas fa-times close" id="btn-small-menu-close"></span>
+    <ul>
+        <li class="small-menu-li"><a href="#">Finanse</a></li>
+        <li class="small-menu-li"><a href="#">To-Do List</a></li>
+        <li class="small-menu-li"><a href="#">Lista zakupów</a></li>
+        <li class="small-menu-li"><a href="#">Jadłospis</a></li>
+        <li class="small-menu-li"><a href="#">Rezerwacje</a></li>
+    </ul>
+</nav>
+
+<div class="top-bar">
+    <div class="top-bar-wrapper">
+        <a href="index.html"><span id="logo">home<span class="logo-color">Brain</span></span></a>
+
+        <nav class="top-menu">
+            <ul>
+                <li class="active bold"><a href="#">Finanse</a></li>
+                <li><a href="#">To-Do List</a></li>
+                <li><a href="#">Lista zakupów</a></li>
+                <li><a href="#">Jadłospis</a></li>
+                <li><a href="#">Rezerwacje</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-actions">
+            Witaj,
+            <span id="user-name">{{ current_user }}</span>!
+            <span class="fas fa-user" id="ico-user"></span>
+            <span class="fas fa-cog" id="ico-settings"></span>
+            <div id="btn-log-out">wyloguj</div>
+        </div>
+    </div>
+</div>
