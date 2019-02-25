@@ -4,7 +4,7 @@
     {% include 'includes/_basic_header.html' %}
     <div class="content">
         <div class="content-wrapper">
-            <h2 id="title-main">Logowanie.</h2>
+            <h2 id="title-main-login">Logowanie.</h2>
 
 
             <section class="box-login">
@@ -14,7 +14,7 @@
                     <input type="password" id="login-password" name="password" placeholder="Hasło"
                            value={{ request.form.password }}>
                     {#            <div class="btn btn-login">Zaloguj</div>#}
-                    <button type="submit">Zaloguj</button>
+                    <button class="btn btn-login" type="submit">Zaloguj</button>
                     <div class="forgot-pwd"><a href="lost-password.html">Zgubione hasło</a></div>
                 </form>
             </section>
