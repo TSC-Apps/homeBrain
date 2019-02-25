@@ -1,14 +1,9 @@
-var dataController = (function () {
-
+const dataController = (function () {
 
 })();
 
-
-
-
-var UIcontroller = (function () {
-
-    var DOMstrings = {
+const UIcontroller = (function () {
+    const DOMstrings = {
         selectMonth: '.select-months',
         selectItemType: '.select-type',
         inputItemName: '#name',
@@ -22,27 +17,19 @@ var UIcontroller = (function () {
 
     return {
         clearInputs: function() {
-            document.querySelector(DOMstrings.inputItemName).value = '';
-            document.querySelector(DOMstrings.inputItemValue).value = '';
-            document.querySelector(DOMstrings.inputItemDate).value = '';
+            const inputs = Array.from(document.querySelectorAll(DOMstrings.inputItemName + ', ' + DOMstrings.inputItemValue + ', ' + DOMstrings.inputItemDate));
+
+            inputs.forEach(current => {
+                current.value = '';
+            });
+
             document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
+
+            inputs[0].focus();
         },
 
         setInitialDate: function() {
             document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
-        },
-
-        getMonth: function() {
-            return document.querySelector(DOMstrings.selectMonth).value;
-        },
-
-        getInputValues: function() {
-            return {
-                type: document.querySelector(DOMstrings.selectItemType).value,
-                name: document.querySelector(DOMstrings.inputItemName).value,
-                value: document.querySelector(DOMstrings.inputItemValue).value,
-                date: document.querySelector(DOMstrings.inputItemDate).value,
-            };
         },
 
         getDOMstrings: function() {
@@ -54,44 +41,29 @@ var UIcontroller = (function () {
 
 
 
-var controller = (function (dataCtrl, UICtrl) {
-
-    var DOM = UICtrl.getDOMstrings();
+const controller = (function (dataCtrl, UICtrl) {
+    let DOM ;
     //var month = UICtrl.getMonth();
-
-    var expenses = [];
-    var income = [];
 
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
     }
 
-    document.querySelector(DOM.btnSmallMenu).addEventListener('click', toggleSmallMenu);
-    document.querySelector(DOM.btnSmallMenuClose).addEventListener('click', toggleSmallMenu);
-    
-    document.querySelector(DOM.btnAdd).addEventListener('click', function() {
-        var values = UICtrl.getInputValues();
-        UICtrl.clearInputs();
-        if(values.type === 'expense') {
-            expenses.push(values);
-        } else {
-            income.push(values);
-        }
-    });
+    function setUpDOM() {
+        DOM = UICtrl.getDOMstrings();
+
+        document.querySelector(DOM.btnSmallMenu).addEventListener('click', toggleSmallMenu);
+        document.querySelector(DOM.btnSmallMenuClose).addEventListener('click', toggleSmallMenu);
+        document.querySelector(DOM.btnAdd).addEventListener('click', function() {
+            UICtrl.clearInputs();
+        });
+    }
 
     return {
         initialize: function() {
+            setUpDOM();
             UICtrl.setInitialDate();
-            console.log('App has been initialized.');
         },
-
-        getIncome: function() {
-            return income;
-        },
-
-        getExpenses: function() {
-            return expenses;
-        }
     };
 })(dataController, UIcontroller);
 
