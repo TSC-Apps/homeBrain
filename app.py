@@ -61,8 +61,8 @@ def index():
         header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
-                           sum_inc=sum_incomes[0], sum_exp=sum_expenses[0], final_bil=bilance,
-                           header_content=header_content)
+                           sum_inc=round(sum_incomes[0], 2), sum_exp=round(sum_expenses[0], 2),
+                           final_bil=round(bilance, 2), header_content=header_content)
 
 
 @app.route('/login', methods=['GET', 'POST'])
