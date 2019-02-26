@@ -76,19 +76,20 @@ input {
     line-height: 34px;
     padding: 0 10px;
     height: 33px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 
 input, select:focus {
     outline: none;
+    transition: all 0.2s ease-in-out;
 }
 
 input:focus {
-    border: 1px solid $red;
+    border: 2px solid $red;
 }
 
 .input-income:focus {
-    border: 1px solid $green;
+    border: 2px solid $green;
 }
 
 .visible {

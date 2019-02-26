@@ -1,0 +1,64 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.modal {
+    background-color: white;
+    max-width: 350px;
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-top: 200px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 7px;
+    @include shadow();
+    z-index: 100;
+    border: 1px solid $light-gray;
+
+    .btn-edit-item {
+        position: static;
+        display: block;
+        margin-top: 50px;
+        width: 50px;
+        margin: 0 auto;
+        margin-top: 25px;
+    }
+
+    h3 {
+        font-size: 16px;
+        color: $main-color;
+        margin-bottom: 30px;
+    }
+}
+
+#modal-edit {
+    display: none;
+}
+
+.btn-close-edit {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.btn-close-edit:hover {
+    color: $red;
+    transition: 0.2s all ease-in-out;
+}
+
+
+.modal input {
+    background: #F6F6F6;
+    padding: 7px;
+    border-radius: 7px;
+    border: 2px solid transparent;
+}
+
+.modal input:focus {
+    outline: none;
+    border: 2px solid $green;
+
+}

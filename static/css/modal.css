@@ -1,0 +1,60 @@
+.modal {
+  background-color: white;
+  max-width: 350px;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 200px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  border: 1px solid #E3E3E3;
+}
+.modal .btn-edit-item {
+  position: static;
+  display: block;
+  margin-top: 50px;
+  width: 50px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.modal h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+#modal-edit {
+  display: none;
+}
+
+.btn-close-edit {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.btn-close-edit:hover {
+  color: #E93838;
+  transition: 0.2s all ease-in-out;
+}
+
+.modal input {
+  background: #F6F6F6;
+  padding: 7px;
+  border-radius: 7px;
+  border: 2px solid transparent;
+}
+
+.modal input:focus {
+  outline: none;
+  border: 2px solid #26DA6E;
+}
+
+/*# sourceMappingURL=modal.css.map */
