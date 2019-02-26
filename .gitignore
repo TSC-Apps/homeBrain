@@ -1,11 +1,11 @@
 
-css/mixins\.css
+static/css/mixins\.css
 
-css/mixins\.css\.map
+static/css/mixins\.css\.map
 
-css/variables\.css
+static/css/variables\.css
 
-css/variables\.css\.map
+static/css/variables\.css\.map
 
 .idea/
 __pycache__/
