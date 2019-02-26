@@ -11,8 +11,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: white;
-  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
   border-radius: 7px;
 }
 .box-login input {

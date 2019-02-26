@@ -16,20 +16,6 @@ const UIcontroller = (function () {
     };
 
     return {
-        clearInputs: function() {
-            const inputs = Array.from(document.querySelectorAll(DOMstrings.inputItemName + ', ' + DOMstrings.inputItemValue + ', ' + DOMstrings.inputItemDate));
-
-            setTimeout(() => {
-                inputs.forEach(current => {
-                    current.value = '';
-                });
-            }, 100);
-
-            document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
-
-            inputs[0].focus();
-        },
-
         setInitialDate: function() {
             document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
         },
@@ -44,7 +30,7 @@ const UIcontroller = (function () {
 
 
 const controller = (function (dataCtrl, UICtrl) {
-    let DOM ;
+    let DOM;
 
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
@@ -55,8 +41,14 @@ const controller = (function (dataCtrl, UICtrl) {
 
         document.querySelector(DOM.btnSmallMenu).addEventListener('click', toggleSmallMenu);
         document.querySelector(DOM.btnSmallMenuClose).addEventListener('click', toggleSmallMenu);
-        document.querySelector(DOM.btnAdd).addEventListener('click', function() {
-            UICtrl.clearInputs();
+
+        document.querySelector(DOM.selectItemType).addEventListener('change', () => {
+            const inputs = document.querySelectorAll('.input');
+            const arrInputs = Array.from(inputs);
+
+            arrInputs.forEach(current => {
+                current.classList.toggle('input-income');
+            })
         });
     }
 

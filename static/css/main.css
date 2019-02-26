@@ -43,7 +43,6 @@ li a {
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -74,16 +73,23 @@ select {
 input {
   background-color: #E3E3E3;
   color: #777;
-  height: 30px;
-  border: none;
   border-radius: 7px;
   line-height: 34px;
   padding: 0 10px;
-  height: 34px;
+  height: 33px;
+  border: 1px solid transparent;
 }
 
 input, select:focus {
   outline: none;
+}
+
+input:focus {
+  border: 1px solid #E93838;
+}
+
+.input-income:focus {
+  border: 1px solid #26DA6E;
 }
 
 .visible {
@@ -97,7 +103,6 @@ input, select:focus {
   background-color: white;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -163,8 +168,8 @@ input, select:focus {
   background-color: white;
   z-index: 200;
   cursor: pointer;
-  -webkit-box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 25px 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
 }
 
 #ico-small-menu:hover {
@@ -230,7 +235,6 @@ input, select:focus {
   float: left;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
