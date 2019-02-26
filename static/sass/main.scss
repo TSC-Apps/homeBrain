@@ -56,11 +56,22 @@ select {
     height: 34px;
 }
 
-.select-months {
+.select-date {
     position: absolute;
-    right: 0;
     top: 8px;
     background-color: #F6F6F6;
+}
+
+.select-months {
+    right: 130px;
+}
+
+.select-years {
+    right: 50px;
+}
+
+.select-accept {
+    right: 0;
 }
 
 .btn {

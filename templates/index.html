@@ -18,22 +18,31 @@
 
             <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
             <h2 id="title-main">Finanse.</h2>
-            <select class="select-months" name="select-months">
-                <form method="GET" action="/">
-                    <option value="1">STY</option>
-                    <option value="2">LUT</option>
-                    <option value="3">MAR</option>
-                    <option value="4">KWI</option>
-                    <option value="5">MAJ</option>
-                    <option value="6">CZE</option>
-                    <option value="7">LIP</option>
-                    <option value="8">SIE</option>
-                    <option value="9">WRZ</option>
-                    <option value="10">PAZ</option>
-                    <option value="11">LIS</option>
-                    <option value="12">GRU</option>
-                </form>
-            </select>
+
+            <form method="GET" action="/">
+                <select class="select-date select-months" name="select-months">
+                        <option value="1">STY</option>
+                        <option value="2">LUT</option>
+                        <option value="3">MAR</option>
+                        <option value="4">KWI</option>
+                        <option value="5">MAJ</option>
+                        <option value="6">CZE</option>
+                        <option value="7">LIP</option>
+                        <option value="8">SIE</option>
+                        <option value="9">WRZ</option>
+                        <option value="10">PAZ</option>
+                        <option value="11">LIS</option>
+                        <option value="12">GRU</option>
+                </select>
+                <select class="select-date select-years" name="select-years">
+                        <option value="1">2018</option>
+                        <option value="1">2019</option>
+                        <option value="2">2020</option>
+                        <option value="3">2021</option>
+                </select>
+
+                <button type="submit" class="btn select-date select-accept btn-add">OK</button>
+            </form>
 
             <section class="box-horizontal" id="box-settings">
                 <form method="POST" action="/post_item">
