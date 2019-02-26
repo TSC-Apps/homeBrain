@@ -25,7 +25,7 @@ def post_item():
             month = date[1]
             day = date[2]
         cursor.execute(_SQL, (request.form['select-type'], request.form['name'],
-                              request.form['select-person'], day, month, year, request.form['date'],
+                              session['username'], day, month, year, request.form['date'],
                               request.form['value']))
     return redirect(url_for('index'))
 
@@ -50,8 +50,7 @@ def index():
         cursor.execute(_SQL)
         sum_incomes = cursor.fetchone()
 
-
-        #Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
+        # Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
         expenses = 0
         if sum_expenses[0] is not None:
             expenses = sum_expenses[0]

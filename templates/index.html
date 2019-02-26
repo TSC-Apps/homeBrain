@@ -32,9 +32,7 @@
                         <option value="Wydatek">Wydatek</option>
                         <option value="Przychod">Przychód</option>
                     </select>
-                    <select  class="select-type" name="select-person">
-                        <option value="{{ session.username }}">{{ session.username }}</option>
-                    </select>
+
                     <input maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
                     <input maxlength="10" type="number" step="0.01" id="value" name="value" placeholder="Wartość">
                     <input maxlength="10" type="date" id="date" name="date">
@@ -70,7 +68,7 @@
 
                     <div class="box-sum box-sum-expenses">
                         <p>Suma:</p>
-                        <p class="sum-value" id="expenses-sum">{{ sum_exp }}</p>
+                        <p class="sum-value" id="expenses-sum">{{ sum_exp }} PLN</p>
                     </div>
                 </section>
 
@@ -97,7 +95,7 @@
 
                     <div class="box-sum box-sum-income">
                         <p>Suma:</p>
-                        <p class="sum-value" id="income-sum">{{ sum_inc }}</p>
+                        <p class="sum-value" id="income-sum">{{ sum_inc }} PLN</p>
                     </div>
 
                 </section>
@@ -109,7 +107,7 @@
 
                 <div class="box-balance">
                     <p class="bold">Bilans:</p>
-                    <p id="balance-value">{{ final_bil }}</p>
+                    <p id="balance-value">{{ final_bil }} PLN</p>
                     <p id="balance-conclusion">czyli <span class="balance-less-value bold">501 zł</span> mniej niż w
                         <span
                                 class="balance-month bold">październiku</span>.</p>
