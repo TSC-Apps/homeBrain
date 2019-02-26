@@ -50,6 +50,16 @@ def index():
         cursor.execute(_SQL)
         sum_incomes = cursor.fetchone()
 
+
+        #Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
+        expenses = 0
+        if sum_expenses[0] is not None:
+            expenses = sum_expenses[0]
+
+        incomes = 0
+        if sum_incomes[0] is not None:
+            incomes = sum_incomes[0]
+
         bilance = 0
         if sum_incomes[0] is not None and sum_expenses[0] is not None:
             bilance = sum_incomes[0] - sum_expenses[0]
@@ -61,7 +71,7 @@ def index():
         header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
-                           sum_inc=round(sum_incomes[0], 2), sum_exp=round(sum_expenses[0], 2),
+                           sum_inc=round(incomes, 2), sum_exp=round(expenses, 2),
                            final_bil=round(bilance, 2), header_content=header_content)
 
 
@@ -81,7 +91,6 @@ def login():
                 if password_candidate == result[0]:
                     session['logged_in'] = True
                     session['username'] = username
-                    print('Zalogowano')
                     return redirect(url_for('index'))
                 else:
                     return render_template('login.html')
