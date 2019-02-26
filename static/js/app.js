@@ -19,9 +19,11 @@ const UIcontroller = (function () {
         clearInputs: function() {
             const inputs = Array.from(document.querySelectorAll(DOMstrings.inputItemName + ', ' + DOMstrings.inputItemValue + ', ' + DOMstrings.inputItemDate));
 
-            inputs.forEach(current => {
-                current.value = '';
-            });
+            setTimeout(() => {
+                inputs.forEach(current => {
+                    current.value = '';
+                });
+            }, 100);
 
             document.querySelector(DOMstrings.inputItemDate).valueAsDate = new Date();
 
@@ -43,7 +45,6 @@ const UIcontroller = (function () {
 
 const controller = (function (dataCtrl, UICtrl) {
     let DOM ;
-    //var month = UICtrl.getMonth();
 
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
