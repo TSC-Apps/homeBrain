@@ -18,6 +18,9 @@
 .box-login input {
   margin: 8px;
 }
+.box-login input:focus {
+  border: 2px solid #333ADB;
+}
 .box-login span {
   color: #777;
 }

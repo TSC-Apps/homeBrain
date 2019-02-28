@@ -21,6 +21,10 @@
     input {
         margin: 8px;
     }
+
+    input:focus {
+        border: 2px solid $blue;
+    }
     
     span {
         color: $gray;
