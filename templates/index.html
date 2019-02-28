@@ -19,7 +19,7 @@
             <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
             <h2 id="title-main">Finanse.</h2>
 
-            <form method="GET" action="/">
+            <form method="POST" action="/search">
                 <select class="select-date select-months" name="select-months">
                         <option value="1">STY</option>
                         <option value="2">LUT</option>
@@ -35,10 +35,10 @@
                         <option value="12">GRU</option>
                 </select>
                 <select class="select-date select-years" name="select-years">
-                        <option value="1">2018</option>
-                        <option value="1">2019</option>
-                        <option value="2">2020</option>
-                        <option value="3">2021</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
                 </select>
 
                 <button type="submit" class="btn select-date select-accept btn-add">OK</button>
