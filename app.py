@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from DBcm import UseDatabase
 from checker import check_logged_in
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -34,20 +35,24 @@ def post_item():
 @check_logged_in
 def index():
     with UseDatabase(dbconfig) as cursor:
-        _SQL = """select name, value, person, date from bilance where category='Wydatek'"""
-        cursor.execute(_SQL)
+        now = datetime.now()
+        month = now.month
+        year = now.year
+
+        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category = 'Wydatek'"""
+        cursor.execute(_SQL, (month, year))
         contents_expenses = cursor.fetchall()
 
-        _SQL = """select name, value, person, date from bilance where category='Przychod'"""
-        cursor.execute(_SQL)
+        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
 
-        _SQL = """select sum(value) from bilance where category='Wydatek'"""
-        cursor.execute(_SQL)
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Wydatek'"""
+        cursor.execute(_SQL, (month, year))
         sum_expenses = cursor.fetchone()
 
-        _SQL = """select sum(value) from bilance where category='Przychod'"""
-        cursor.execute(_SQL)
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        cursor.execute(_SQL, (month, year))
         sum_incomes = cursor.fetchone()
 
         # Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
