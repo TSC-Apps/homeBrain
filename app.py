@@ -39,19 +39,23 @@ def index():
         month = now.month
         year = now.year
 
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category = 'Wydatek'"""
+        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) 
+        and category = 'Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_expenses = cursor.fetchall()
 
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s)
+         and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
 
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Wydatek'"""
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
+         and category='Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
         sum_expenses = cursor.fetchone()
 
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
+         and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         sum_incomes = cursor.fetchone()
 
@@ -86,19 +90,23 @@ def select_date_bilance():
     year = request.form['select-years']
 
     with UseDatabase(dbconfig) as cursor:
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category = 'Wydatek'"""
+        _SQL = """select name, value, person, date from bilance where month = (%s)
+         and year = (%s) and category = 'Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_expenses = cursor.fetchall()
 
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        _SQL = """select name, value, person, date from bilance where month = (%s)
+         and year = (%s) and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
 
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Wydatek'"""
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
+         and category='Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
         sum_expenses = cursor.fetchone()
 
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s) and category='Przychod'"""
+        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
+         and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         sum_incomes = cursor.fetchone()
 
@@ -164,5 +172,3 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
