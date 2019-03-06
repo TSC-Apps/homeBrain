@@ -54,15 +54,26 @@ def index():
         cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
 
+        # bilans miesięczny
         _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
-         and category='Wydatek' order by date desc"""
+         and category='Wydatek'"""
         cursor.execute(_SQL, (month, year))
         sum_expenses = cursor.fetchone()
 
         _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
-         and category='Przychod' order by date desc"""
+         and category='Przychod'"""
         cursor.execute(_SQL, (month, year))
         sum_incomes = cursor.fetchone()
+
+        # bilans całościowy
+        _SQL = """select sum(value) from bilance where category='Wydatek'"""
+        cursor.execute(_SQL)
+        sum_all_expenses = cursor.fetchone()
+
+        _SQL = """select sum(value) from bilance where  category='Przychod'"""
+        cursor.execute(_SQL)
+        sum_all_incomes = cursor.fetchone()
+
 
         # Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
         expenses = 0
@@ -74,12 +85,12 @@ def index():
             incomes = sum_incomes[0]
 
         bilance = 0
-        if sum_incomes[0] is not None and sum_expenses[0] is not None:
-            bilance = sum_incomes[0] - sum_expenses[0]
-        elif sum_incomes[0] is None and sum_expenses[0] is not None:
-            bilance = 0 - sum_expenses[0]
-        elif sum_incomes[0] is not None and sum_expenses[0] is None:
-            bilance = sum_incomes[0]
+        if sum_incomes[0] is not None and sum_all_expenses[0] is not None:
+            bilance = sum_all_incomes[0] - sum_all_expenses[0]
+        elif sum_all_incomes[0] is None and sum_all_expenses[0] is not None:
+            bilance = 0 - sum_all_expenses[0]
+        elif sum_incomes[0] is not None and sum_all_expenses[0] is None:
+            bilance = sum_all_incomes[0]
 
         header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
 
