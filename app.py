@@ -39,6 +39,11 @@ def index():
         month = now.month
         year = now.year
 
+        #zabieg mający na celu sprawdzenie czy kazaliśmy filtrować rekordy
+        if 'select-months' and 'select-years' in request.args:
+            month = request.args['select-months']
+            year = request.args['select-years']
+
         _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) 
         and category = 'Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
@@ -46,57 +51,6 @@ def index():
 
         _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s)
          and category='Przychod' order by date desc"""
-        cursor.execute(_SQL, (month, year))
-        contents_incomes = cursor.fetchall()
-
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
-         and category='Wydatek' order by date desc"""
-        cursor.execute(_SQL, (month, year))
-        sum_expenses = cursor.fetchone()
-
-        _SQL = """select sum(value) from bilance where month = (%s) and year = (%s)
-         and category='Przychod' order by date desc"""
-        cursor.execute(_SQL, (month, year))
-        sum_incomes = cursor.fetchone()
-
-        # Zabieg konieczny ze wzgledu zwracania przez kursor krotki...
-        expenses = 0
-        if sum_expenses[0] is not None:
-            expenses = sum_expenses[0]
-
-        incomes = 0
-        if sum_incomes[0] is not None:
-            incomes = sum_incomes[0]
-
-        bilance = 0
-        if sum_incomes[0] is not None and sum_expenses[0] is not None:
-            bilance = sum_incomes[0] - sum_expenses[0]
-        elif sum_incomes[0] is None and sum_expenses[0] is not None:
-            bilance = 0 - sum_expenses[0]
-        elif sum_incomes[0] is not None and sum_expenses[0] is None:
-            bilance = sum_incomes[0]
-
-        header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
-
-    return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
-                           sum_inc=round(incomes, 2), sum_exp=round(expenses, 2),
-                           final_bil=round(bilance, 2), header_content=header_content)
-
-
-@app.route('/search', methods=['POST'])
-@check_logged_in
-def select_date_bilance():
-    month = request.form['select-months']
-    year = request.form['select-years']
-
-    with UseDatabase(dbconfig) as cursor:
-        _SQL = """select name, value, person, date from bilance where month = (%s)
-         and year = (%s) and category = 'Wydatek' order by date desc"""
-        cursor.execute(_SQL, (month, year))
-        contents_expenses = cursor.fetchall()
-
-        _SQL = """select name, value, person, date from bilance where month = (%s)
-         and year = (%s) and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
 
