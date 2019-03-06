@@ -34,7 +34,8 @@
                     </select>
 
                     <input class="input" required maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
-                    <input class="input" required maxlength="10" type="number" step="0.01" id="value" name="value" placeholder="Wartość">
+                    <input class="input" required maxlength="10" type="number" step="0.01" id="value" name="value"
+                           placeholder="Wartość">
                     <input class="input" required type="date" id="date" name="date">
                     <button type="submit" class="btn btn-add">Dodaj</button>
                 </form>
@@ -56,9 +57,10 @@
                                 <tr class="table-row">
                                     <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove">
                                     </td>
-                                    {% for item in bilance_row %}
-                                        <td class="table-item">{{ item }}</td>
-                                    {% endfor %}
+                                    <td class="table-item item-name">{{ bilance_row[0] }}</td>
+                                    <td class="table-item item-value">-{{ bilance_row[1] }}</td>
+                                    <td class="table-item">{{ bilance_row[2] }}</td>
+                                    <td class="table-item">{{ bilance_row[3] }}</td>
                                     <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                                 </tr>
                             {% endfor %}
@@ -84,9 +86,10 @@
                         {% for bilance_row in the_data_incomes %}
                             <tr class="table-row">
                                 <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                                {% for item in bilance_row %}
-                                    <td class="table-item">{{ item }}</td>
-                                {% endfor %}
+                                <td class="table-item item-name">{{ bilance_row[0] }}</td>
+                                <td class="table-item item-value">+{{ bilance_row[1] }}</td>
+                                <td class="table-item">{{ bilance_row[2] }}</td>
+                                <td class="table-item">{{ bilance_row[3] }}</td>
                                 <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                             </tr>
                         {% endfor %}

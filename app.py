@@ -85,7 +85,7 @@ def index():
             incomes = sum_incomes[0]
 
         bilance = 0
-        if sum_incomes[0] is not None and sum_all_expenses[0] is not None:
+        if sum_all_incomes[0] is not None and sum_all_expenses[0] is not None:
             bilance = sum_all_incomes[0] - sum_all_expenses[0]
         elif sum_all_incomes[0] is None and sum_all_expenses[0] is not None:
             bilance = 0 - sum_all_expenses[0]
