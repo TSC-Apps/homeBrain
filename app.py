@@ -44,12 +44,12 @@ def index():
             month = request.args['select-months']
             year = request.args['select-years']
 
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s) 
+        _SQL = """select id, name, value, person, date from bilance where month = (%s) and year = (%s) 
         and category = 'Wydatek' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_expenses = cursor.fetchall()
 
-        _SQL = """select name, value, person, date from bilance where month = (%s) and year = (%s)
+        _SQL = """select id, name, value, person, date from bilance where month = (%s) and year = (%s)
          and category='Przychod' order by date desc"""
         cursor.execute(_SQL, (month, year))
         contents_incomes = cursor.fetchall()
@@ -92,7 +92,7 @@ def index():
         elif sum_incomes[0] is not None and sum_all_expenses[0] is None:
             bilance = sum_all_incomes[0]
 
-        header_content = ['', 'nazwa', 'wartość', 'osoba', 'data']
+        header_content = ['', 'id', 'nazwa', 'wartość', 'osoba', 'data']
 
     return render_template('index.html', the_data_expenses=contents_expenses, the_data_incomes=contents_incomes,
                            sum_inc=round(incomes, 2), sum_exp=round(expenses, 2),
