@@ -17,7 +17,7 @@
     z-index: 100;
     border: 1px solid $light-gray;
 
-    .btn-edit-item {
+    .btn-modal-item {
         position: static;
         display: block;
         margin-top: 50px;
@@ -37,14 +37,18 @@
     display: none;
 }
 
-.btn-close-edit {
+#modal-delete {
+    display: none;
+}
+
+.btn-close-modal {
     position: absolute;
     right: 20px;
     top: 20px;
     cursor: pointer;
 }
 
-.btn-close-edit:hover {
+.btn-close-modal:hover {
     color: $red;
     transition: 0.2s all ease-in-out;
 }

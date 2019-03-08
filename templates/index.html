@@ -8,13 +8,20 @@
         <div class="content-wrapper">
 
             <div class="modal" id="modal-edit">
-                <span class="fas fa-times btn-close-edit"></span>
+                <span class="fas fa-times btn-close-modal btn-close-edit"></span>
                 <h3>Edycja rekordu</h3>
                 <p>ID:</p><input class="input-edit-id" disabled type="text">
                 <p>Nazwa:</p><input maxlength="10" type="text">
                 <p>Wartość:</p><input maxlength="10" step="0.01" type="number">
                 <p>Data:</p><input type="date">
-                <button type="submit" class="btn btn-add btn-edit-item">Edytuj</button>
+                <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
+            </div>
+
+            <div class="modal" id="modal-delete">
+                <span class="fas fa-times btn-close-modal btn-close-delete"></span>
+                <h3>Usuwanie rekordu</h3>
+                <p>ID:</p><input class="input-delete-id" disabled type="text">
+                <button type="submit" class="btn btn-add btn-modal-item btn-delete-item">Usuń</button>
             </div>
 
             <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">

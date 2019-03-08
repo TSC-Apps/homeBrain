@@ -14,14 +14,18 @@ const UIcontroller = (function () {
         smallMenuContent: '#small-menu',
         btnSmallMenuClose: '#btn-small-menu-close',
         btnEditItem: '.btn-edit-item',
+        btnDeleteItem: '.btn-delete-item',
         btnCloseEdit: '.btn-close-edit',
+        btnCloseDelete: '.btn-close-delete',
         modalEdit: '#modal-edit',
+        modalDelete: '#modal-delete',
         expensesBox: '#box-expenses',
         incomeBox: '#box-income',
         selectMonths: '.select-months',
         selectYears: '.select-years',
         selectAcceptDate: '.select-accept-date',
-        inputItemEditID: '.input-edit-id'
+        inputItemEditID: '.input-edit-id',
+        inputItemDeleteID: '.input-delete-id'
     };
 
     return {
@@ -78,6 +82,13 @@ const UIcontroller = (function () {
                 // show item's id in the editing box
                 document.querySelector(DOMstrings.inputItemEditID).value = itemID;
             }
+
+            if(event.target.className === "btn btn-remove") {
+                item = event.target.parentNode.parentNode.id;
+                itemID = item.split('-')[1];
+                // show item's id in the deleting box
+                document.querySelector(DOMstrings.inputItemDeleteID).value = itemID;
+            }
         },
 
 
@@ -131,6 +142,21 @@ const controller = (function (dataCtrl, UICtrl) {
             UICtrl.setEditItemID(event);
         });
 
+        // open deleting box
+        document.querySelector(DOM.expensesBox).addEventListener('click', event => {
+            if(event.target.className === 'btn btn-remove')
+                document.querySelector(DOM.modalDelete).style.display = 'block';
+
+            UICtrl.setEditItemID(event);
+        });
+
+        document.querySelector(DOM.incomeBox).addEventListener('click', event => {
+            if(event.target.className === 'btn btn-remove')
+                document.querySelector(DOM.modalDelete).style.display = 'block';
+
+            UICtrl.setEditItemID(event);
+        });
+
         // close the editing box
         document.querySelector(DOM.btnEditItem).addEventListener('click', () => {
             document.querySelector(DOM.modalEdit).style.display = 'none';
@@ -138,6 +164,15 @@ const controller = (function (dataCtrl, UICtrl) {
 
         document.querySelector(DOM.btnCloseEdit).addEventListener('click', () => {
             document.querySelector(DOM.modalEdit).style.display = 'none';
+        });
+
+        // close the deleting box
+        document.querySelector(DOM.btnDeleteItem).addEventListener('click', () => {
+            document.querySelector(DOM.modalDelete).style.display = 'none';
+        });
+
+        document.querySelector(DOM.btnCloseDelete).addEventListener('click', () => {
+            document.querySelector(DOM.modalDelete).style.display = 'none';
         });
     }
 
