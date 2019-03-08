@@ -1,7 +1,3 @@
-const dataController = (function () {
-
-})();
-
 const UIcontroller = (function () {
     const DOMstrings = {
         selectMonth: '.select-months',
@@ -76,17 +72,14 @@ const UIcontroller = (function () {
         setEditItemID: function(event) {
             let item, itemID;
 
+            item = event.target.parentNode.parentNode.id;
+            itemID = item.split('-')[1];
+
             if(event.target.className === "btn btn-edit") {
-                item = event.target.parentNode.parentNode.id;
-                itemID = item.split('-')[1];
-                // show item's id in the editing box
                 document.querySelector(DOMstrings.inputItemEditID).value = itemID;
             }
 
             if(event.target.className === "btn btn-remove") {
-                item = event.target.parentNode.parentNode.id;
-                itemID = item.split('-')[1];
-                // show item's id in the deleting box
                 document.querySelector(DOMstrings.inputItemDeleteID).value = itemID;
             }
         },
@@ -101,9 +94,8 @@ const UIcontroller = (function () {
 
 
 
-const controller = (function (dataCtrl, UICtrl) {
+const controller = (function (UICtrl) {
     let DOM;
-
 
     function toggleSmallMenu() {
         document.querySelector(DOM.smallMenuContent).classList.toggle('visible');
@@ -127,6 +119,11 @@ const controller = (function (dataCtrl, UICtrl) {
             })
         });
 
+        setUpModalButtons();
+    }
+
+
+    function setUpModalButtons() {
         // open editing box
         document.querySelector(DOM.expensesBox).addEventListener('click', event => {
             if(event.target.className === 'btn btn-edit')
@@ -176,6 +173,7 @@ const controller = (function (dataCtrl, UICtrl) {
         });
     }
 
+
     function setUpDate() {
         UICtrl.setInitialDate();
     }
@@ -186,6 +184,6 @@ const controller = (function (dataCtrl, UICtrl) {
             setUpDate();
         },
     };
-})(dataController, UIcontroller);
+})(UIcontroller);
 
 controller.initialize();
