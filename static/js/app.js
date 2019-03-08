@@ -20,7 +20,8 @@ const UIcontroller = (function () {
         incomeBox: '#box-income',
         selectMonths: '.select-months',
         selectYears: '.select-years',
-        selectAcceptDate: '.select-accept-date'
+        selectAcceptDate: '.select-accept-date',
+        labelItemEditID: '.item-edit-id'
     };
 
     return {
@@ -68,6 +69,22 @@ const UIcontroller = (function () {
         },
 
 
+        setEditItemID: function(event) {
+            let item, itemID;
+
+            const target = event.target;
+            item = target.parentNode.parentNode.id;
+            item = item.split('-');
+
+
+            if(item[0] === 'item') {
+                itemID = item[1];
+                // show item's id in the editing box
+                document.querySelector(DOMstrings.labelItemEditID).innerHTML = itemID;
+            }
+        },
+
+
         getDOMstrings: function() {
             return DOMstrings;
         }
@@ -107,11 +124,15 @@ const controller = (function (dataCtrl, UICtrl) {
         document.querySelector(DOM.expensesBox).addEventListener('click', event => {
             if(event.target.className === 'btn btn-edit')
                 document.querySelector(DOM.modalEdit).style.display = 'block';
+
+            UICtrl.setEditItemID(event);
         });
 
         document.querySelector(DOM.incomeBox).addEventListener('click', event => {
             if(event.target.className === 'btn btn-edit')
                 document.querySelector(DOM.modalEdit).style.display = 'block';
+
+            UICtrl.setEditItemID(event);
         });
 
         // close the editing box
