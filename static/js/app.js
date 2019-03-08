@@ -21,7 +21,7 @@ const UIcontroller = (function () {
         selectMonths: '.select-months',
         selectYears: '.select-years',
         selectAcceptDate: '.select-accept-date',
-        labelItemEditID: '.item-edit-id'
+        inputItemEditID: '.input-edit-id'
     };
 
     return {
@@ -72,15 +72,11 @@ const UIcontroller = (function () {
         setEditItemID: function(event) {
             let item, itemID;
 
-            const target = event.target;
-            item = target.parentNode.parentNode.id;
-            item = item.split('-');
-
-
-            if(item[0] === 'item') {
-                itemID = item[1];
+            if(event.target.className === "btn btn-edit") {
+                item = event.target.parentNode.parentNode.id;
+                itemID = item.split('-')[1];
                 // show item's id in the editing box
-                document.querySelector(DOMstrings.labelItemEditID).innerHTML = itemID;
+                document.querySelector(DOMstrings.inputItemEditID).value = itemID;
             }
         },
 

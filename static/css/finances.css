@@ -191,6 +191,9 @@ table {
 .box-balance .bold {
   font-size: 14px;
 }
+.box-balance p {
+  margin-top: 50px;
+}
 
 #ico-summary {
   top: 28px;
@@ -198,6 +201,7 @@ table {
 
 #balance-value {
   font-size: 36px;
+  margin-top: 20px;
   font-weight: bold;
 }
 
