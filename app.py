@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from DBcm import UseDatabase
 from checker import check_logged_in
 from datetime import datetime
@@ -102,7 +102,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'].title()
         password_candidate = request.form['password']
 
         with UseDatabase(dbconfig) as cursor:
@@ -117,8 +117,10 @@ def login():
                     session['username'] = username
                     return redirect(url_for('index'))
                 else:
-                    return render_template('login.html')
+                    flash("Podałeś złe hasło.")
+                    return redirect(url_for('index'))
             else:
+                flash("Nie ma takiego użytkownika")
                 return render_template('login.html')
 
     return render_template('login.html')

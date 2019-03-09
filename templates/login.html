@@ -3,6 +3,14 @@
 {% block body %}
     {% include 'includes/_basic_header.html' %}
     <div class="content">
+        {% for mess in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Ty debilu!</strong> {{ mess }}
+                <button type="button" class="fade close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
         <div class="content-wrapper">
             <h2 id="title-main-login">Logowanie.</h2>
 
