@@ -2,9 +2,14 @@ const UIcontroller = (function () {
     const DOMstrings = {
         selectMonth: '.select-months',
         selectItemType: '.select-type',
+        selectMonths: '.select-months',
+        selectYears: '.select-years',
+        selectAcceptDate: '.select-accept-date',
+
         inputItemName: '#name',
         inputItemValue: '#value',
         inputItemDate: '#date',
+
         btnAdd: '.btn-add',
         btnSmallMenu: '#ico-small-menu',
         smallMenuContent: '#small-menu',
@@ -13,13 +18,12 @@ const UIcontroller = (function () {
         btnDeleteItem: '.btn-delete-item',
         btnCloseEdit: '.btn-close-edit',
         btnCloseDelete: '.btn-close-delete',
+
         modalEdit: '#modal-edit',
         modalDelete: '#modal-delete',
         expensesBox: '#box-expenses',
         incomeBox: '#box-income',
-        selectMonths: '.select-months',
-        selectYears: '.select-years',
-        selectAcceptDate: '.select-accept-date',
+
         inputItemEditID: '.input-edit-id',
         inputItemDeleteID: '.input-delete-id'
     };

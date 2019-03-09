@@ -120,7 +120,7 @@ def login():
                     flash("Podałeś złe hasło.")
                     return redirect(url_for('index'))
             else:
-                flash("Nie ma takiego użytkownika")
+                flash("Nie ma takiego użytkownika.")
                 return render_template('login.html')
 
     return render_template('login.html')

@@ -46,7 +46,7 @@
 
 #title-main-login {
   text-align: center;
-  margin: 20% 0 0 0;
+  margin: 100px 0 0 0;
 }
 
 .forgot-pwd {
@@ -58,6 +58,16 @@
 a {
   text-decoration: none;
   color: #777;
+}
+
+.flash-message {
+  background-color: #333;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
 }
 
 /*# sourceMappingURL=login.css.map */

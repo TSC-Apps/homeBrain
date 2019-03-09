@@ -3,17 +3,16 @@
 {% block body %}
     {% include 'includes/_basic_header.html' %}
     <div class="content">
-        {% for mess in get_flashed_messages() %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Ty debilu!</strong> {{ mess }}
-                <button type="button" class="fade close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endfor %}
         <div class="content-wrapper">
-            <h2 id="title-main-login">Logowanie.</h2>
 
+            {% for mess in get_flashed_messages() %}
+                <div class="flash-message" role="alert">
+                    <strong>Na grube fryty!</strong> {{ mess }} Errare humanum est.
+                    <span class="fas fa-times btn-close-modal btn-close-flash"></span>
+                </div>
+            {% endfor %}
+
+            <h2 id="title-main-login">Logowanie.</h2>
 
             <section class="box-login">
                 <form method="POST" action="">
@@ -27,4 +26,7 @@
             </section>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="../static/js/login.js"></script>
 {% endblock %}
