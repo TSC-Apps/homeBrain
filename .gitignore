@@ -10,3 +10,4 @@ static/css/variables\.css\.map
 .idea/
 __pycache__/
 venv/
+.vscode/
