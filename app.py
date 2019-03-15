@@ -52,7 +52,7 @@ class User(db.Model):
 @app.route('/post_item', methods=['POST'])
 def post_item():
     date = request.form['date'].split('-')
-    if date is not None:
+    if date:
         year = date[0]
         month = date[1]
         day = date[2]
