@@ -75,6 +75,25 @@ def delete_item():
     return redirect(url_for('index'))
 
 
+@app.route('/edit_item', methods=['POST'])
+def edit_item():
+    id = request.form['id-edit']
+    item = Item.query.filter_by(id=id).first()
+
+    name = request.form['name-edit']
+    value = request.form['value-edit']
+    date = request.form['date-edit']
+
+    if name and value and date:
+        item.name = name
+        item.value = value
+        item.date = date
+
+        db.session.commit()
+
+    return redirect(url_for('index'))
+
+
 @app.route('/')
 @check_logged_in
 def index():

@@ -10,11 +10,11 @@
             <div class="modal" id="modal-edit">
                 <span class="fas fa-times btn-close-modal btn-close-edit"></span>
                 <h3>Edycja rekordu</h3>
-                <form method="POST">
-                    <p>ID:</p><input class="input-edit-id" disabled type="text">
-                    <p>Nazwa:</p><input maxlength="10" type="text">
-                    <p>Wartość:</p><input maxlength="10" step="0.01" type="number">
-                    <p>Data:</p><input type="date">
+                <form method="POST" action="{{ url_for('edit_item') }}">
+                    <p>ID:</p><input class="input-edit-id" name="id-edit" type="text">
+                    <p>Nazwa:</p><input maxlength="10" type="text" name="name-edit">
+                    <p>Wartość:</p><input maxlength="10" step="0.01" name= "value-edit" type="number">
+                    <p>Data:</p><input type="date" name="date-edit">
                     <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
                 </form>
             </div>
