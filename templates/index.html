@@ -62,14 +62,14 @@
                                 {% endfor %}
                             </tr>
                             {% for bilance_row in the_data_expenses %}
-                                <tr class="table-row" id="item-{{ bilance_row[0] }}">
+                                <tr class="table-row" id="item-{{ bilance_row.id }}">
                                     <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove">
                                     </td>
-                                    <td class="table-item">{{ bilance_row[0] }}</td>
-                                    <td class="table-item item-name">{{ bilance_row[1] }}</td>
-                                    <td class="table-item  item-value">-{{ bilance_row[2] }}</td>
-                                    <td class="table-item">{{ bilance_row[3] }}</td>
-                                    <td class="table-item">{{ bilance_row[4] }}</td>
+                                    <td class="table-item">{{ bilance_row.id }}</td>
+                                    <td class="table-item item-name">{{ bilance_row.name }}</td>
+                                    <td class="table-item  item-value">-{{ bilance_row.value }}</td>
+                                    <td class="table-item">{{ bilance_row.person }}</td>
+                                    <td class="table-item">{{ bilance_row.date }}</td>
                                     <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                                 </tr>
                             {% endfor %}
@@ -93,13 +93,13 @@
                             {% endfor %}
                         </tr>
                         {% for bilance_row in the_data_incomes %}
-                            <tr class="table-row" id="item-{{ bilance_row[0] }}">
+                            <tr class="table-row" id="item-{{ bilance_row.id }}">
                                 <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                                    <td class="table-item">{{ bilance_row[0] }}</td>
-                                    <td class="table-item item-name">{{ bilance_row[1] }}</td>
-                                    <td class="table-item  item-value">+{{ bilance_row[2] }}</td>
-                                    <td class="table-item">{{ bilance_row[3] }}</td>
-                                    <td class="table-item">{{ bilance_row[4] }}</td>
+                                    <td class="table-item">{{ bilance_row.id }}</td>
+                                    <td class="table-item item-name">{{ bilance_row.name }}</td>
+                                    <td class="table-item  item-value">+{{ bilance_row.value }}</td>
+                                    <td class="table-item">{{ bilance_row.person }}</td>
+                                    <td class="table-item">{{ bilance_row.date }}</td>
                                 <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                             </tr>
                         {% endfor %}
