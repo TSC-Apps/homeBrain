@@ -10,18 +10,22 @@
             <div class="modal" id="modal-edit">
                 <span class="fas fa-times btn-close-modal btn-close-edit"></span>
                 <h3>Edycja rekordu</h3>
-                <p>ID:</p><input class="input-edit-id" disabled type="text">
-                <p>Nazwa:</p><input maxlength="10" type="text">
-                <p>Wartość:</p><input maxlength="10" step="0.01" type="number">
-                <p>Data:</p><input type="date">
-                <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
+                <form method="POST">
+                    <p>ID:</p><input class="input-edit-id" disabled type="text">
+                    <p>Nazwa:</p><input maxlength="10" type="text">
+                    <p>Wartość:</p><input maxlength="10" step="0.01" type="number">
+                    <p>Data:</p><input type="date">
+                    <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
+                </form>
             </div>
 
             <div class="modal" id="modal-delete">
                 <span class="fas fa-times btn-close-modal btn-close-delete"></span>
                 <h3>Usuwanie rekordu</h3>
-                <p>ID:</p><input class="input-delete-id" disabled type="text">
-                <button type="submit" class="btn btn-add btn-modal-item btn-delete-item">Usuń</button>
+                <form method="POST" action="{{ url_for('delete_item') }}">
+                    <p>ID:</p><input class="input-delete-id" name="id" type="text">
+                    <button type="submit" class="btn btn-add btn-modal-item btn-delete-item">Usuń</button>
+                </form>
             </div>
 
             <img src="../static/img/icon-finances.svg" alt="finances icon" class="ico-content">
@@ -35,7 +39,7 @@
             </form>
 
             <section class="box-horizontal" id="box-settings">
-                <form method="POST" action="/post_item">
+                <form method="POST" action="{{ url_for('post_item') }}">
                     <select class="select-type" name="select-type">
                         <option value="Wydatek">Wydatek</option>
                         <option value="Przychod">Przychód</option>
@@ -95,11 +99,11 @@
                         {% for bilance_row in the_data_incomes %}
                             <tr class="table-row" id="item-{{ bilance_row.id }}">
                                 <td><img class="btn btn-remove" src="../static/img/icon-remove.svg" alt="Remove"></td>
-                                    <td class="table-item">{{ bilance_row.id }}</td>
-                                    <td class="table-item item-name">{{ bilance_row.name }}</td>
-                                    <td class="table-item  item-value">+{{ bilance_row.value }}</td>
-                                    <td class="table-item">{{ bilance_row.person }}</td>
-                                    <td class="table-item">{{ bilance_row.date }}</td>
+                                <td class="table-item">{{ bilance_row.id }}</td>
+                                <td class="table-item item-name">{{ bilance_row.name }}</td>
+                                <td class="table-item  item-value">+{{ bilance_row.value }}</td>
+                                <td class="table-item">{{ bilance_row.person }}</td>
+                                <td class="table-item">{{ bilance_row.date }}</td>
                                 <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                             </tr>
                         {% endfor %}

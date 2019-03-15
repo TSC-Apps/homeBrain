@@ -64,6 +64,17 @@ def post_item():
     return redirect(url_for('index'))
 
 
+@app.route('/delete_item', methods=['POST'])
+def delete_item():
+    id = request.form['id']
+
+    item = Item.query.filter_by(id=id).first()
+    db.session.delete(item)
+    db.session.commit()
+
+    return redirect(url_for('index'))
+
+
 @app.route('/')
 @check_logged_in
 def index():
