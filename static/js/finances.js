@@ -25,6 +25,9 @@ const UIcontroller = (function () {
         incomeBox: '#box-income',
 
         inputItemEditID: '.input-edit-id',
+        inputItemEditName: '.input-edit-name',
+        inputItemEditValue: '.input-edit-value',
+        inputItemEditDate: '.input-edit-date',
         inputItemDeleteID: '.input-delete-id'
     };
 
@@ -73,14 +76,24 @@ const UIcontroller = (function () {
         },
 
 
-        setEditItemID: function(event) {
-            let item, itemID;
+        setModalBoxValues: function(event) {
+            let item, itemID, itemName, itemValue, itemDate;
 
-            item = event.target.parentNode.parentNode.id;
-            itemID = item.split('-')[1];
+            item = event.target.parentNode.parentNode;
+
+            itemID = item.id.split('-')[1];
+            itemName = item.firstChild.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling;
+            itemValue = itemName.nextSibling.nextSibling;
+            itemDate = itemValue.nextSibling.nextSibling.nextSibling.nextSibling;
+            itemName = itemName.textContent;
+            itemValue = itemValue.textContent;
+            itemDate = itemDate.textContent;
 
             if(event.target.className === "btn btn-edit") {
                 document.querySelector(DOMstrings.inputItemEditID).value = itemID;
+                document.querySelector(DOMstrings.inputItemEditName).value = itemName;
+                document.querySelector(DOMstrings.inputItemEditValue).value = itemValue;
+                document.querySelector(DOMstrings.inputItemEditDate).value = itemDate;
             }
 
             if(event.target.className === "btn btn-remove") {
@@ -133,14 +146,14 @@ const controller = (function (UICtrl) {
             if(event.target.className === 'btn btn-edit')
                 document.querySelector(DOM.modalEdit).style.display = 'block';
 
-            UICtrl.setEditItemID(event);
+            UICtrl.setModalBoxValues(event);
         });
 
         document.querySelector(DOM.incomeBox).addEventListener('click', event => {
             if(event.target.className === 'btn btn-edit')
                 document.querySelector(DOM.modalEdit).style.display = 'block';
 
-            UICtrl.setEditItemID(event);
+            UICtrl.setModalBoxValues(event);
         });
 
         // open deleting box
@@ -148,14 +161,14 @@ const controller = (function (UICtrl) {
             if(event.target.className === 'btn btn-remove')
                 document.querySelector(DOM.modalDelete).style.display = 'block';
 
-            UICtrl.setEditItemID(event);
+            UICtrl.setModalBoxValues(event);
         });
 
         document.querySelector(DOM.incomeBox).addEventListener('click', event => {
             if(event.target.className === 'btn btn-remove')
                 document.querySelector(DOM.modalDelete).style.display = 'block';
 
-            UICtrl.setEditItemID(event);
+            UICtrl.setModalBoxValues(event);
         });
 
         // close the editing box
