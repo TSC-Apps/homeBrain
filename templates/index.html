@@ -10,11 +10,11 @@
             <div class="modal" id="modal-edit">
                 <span class="fas fa-times btn-close-modal btn-close-edit"></span>
                 <h3>Edycja rekordu</h3>
-                <form method="POST" action="{{ url_for('edit_item') }}">
-                    <p>ID:</p><input class="input-edit-id" name="id-edit" type="text">
-                    <p>Nazwa:</p><input class="input-edit-name" maxlength="10" type="text" name="name-edit">
-                    <p>Wartość:</p><input class="input-edit-value" maxlength="10" step="0.01" name= "value-edit" type="number">
-                    <p>Data:</p><input class="input-edit-date" type="date" name="date-edit">
+                <form class="form-edit" method="POST" action="{{ url_for('edit_item') }}">
+                    <p>ID:</p><input disabled class="input-edit-id" name="id-edit" type="text">
+                    <p>Nazwa:</p><input required class="input-edit-name" maxlength="10" type="text" name="name-edit">
+                    <p>Wartość:</p><input required class="input-edit-value" maxlength="10" step="0.01" name= "value-edit" type="number">
+                    <p>Data:</p><input required class="input-edit-date" type="date" name="date-edit">
                     <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
                 </form>
             </div>
@@ -23,7 +23,7 @@
                 <span class="fas fa-times btn-close-modal btn-close-delete"></span>
                 <h3>Usuwanie rekordu</h3>
                 <form method="POST" action="{{ url_for('delete_item') }}">
-                    <p>ID:</p><input class="input-delete-id" name="id" type="text">
+                    <p>ID:</p><input disabled class="input-delete-id" name="id" type="text">
                     <button type="submit" class="btn btn-add btn-modal-item btn-delete-item">Usuń</button>
                 </form>
             </div>

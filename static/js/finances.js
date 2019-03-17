@@ -86,7 +86,7 @@ const UIcontroller = (function () {
             itemValue = itemName.nextSibling.nextSibling;
             itemDate = itemValue.nextSibling.nextSibling.nextSibling.nextSibling;
             itemName = itemName.textContent;
-            itemValue = itemValue.textContent;
+            itemValue = itemValue.textContent.split('-')[1];
             itemDate = itemDate.textContent;
 
             if(event.target.className === "btn btn-edit") {
@@ -173,7 +173,9 @@ const controller = (function (UICtrl) {
 
         // close the editing box
         document.querySelector(DOM.btnEditItem).addEventListener('click', () => {
-            document.querySelector(DOM.modalEdit).style.display = 'none';
+            if(document.querySelector('.form-edit').valid) {
+                document.querySelector(DOM.modalEdit).style.display = 'none';
+            }
         });
 
         document.querySelector(DOM.btnCloseEdit).addEventListener('click', () => {
