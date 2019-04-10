@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from checker import check_logged_in
 from datetime import datetime
 from flask_migrate import Migrate
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 
@@ -152,9 +153,9 @@ def login():
 
         result = User.query.filter_by(name=username).first()
 
-        # TODO sha256 encrypting
         if result:
-            if password_candidate == result.password:
+            # Sprawdzenie czy hash i haslo pasuju
+            if check_password_hash(result.password, password_candidate):
                 session['logged_in'] = True
                 session['username'] = username
                 return redirect(url_for('index'))
