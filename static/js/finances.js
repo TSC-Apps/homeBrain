@@ -19,6 +19,7 @@ const UIcontroller = (function () {
         btnCloseEdit: '.btn-close-edit',
         btnCloseDelete: '.btn-close-delete',
 
+        modalContainer: '.modal-container',
         modalEdit: '#modal-edit',
         modalDelete: '#modal-delete',
         expensesBox: '#box-expenses',
@@ -143,30 +144,38 @@ const controller = (function (UICtrl) {
     function setUpModalButtons() {
         // open editing box
         document.querySelector(DOM.expensesBox).addEventListener('click', event => {
-            if(event.target.className === 'btn btn-edit')
+            if(event.target.className === 'btn btn-edit') {
                 document.querySelector(DOM.modalEdit).style.display = 'block';
+                document.querySelector(DOM.modalContainer).style.display = 'block'
+            }
 
             UICtrl.setModalBoxValues(event);
         });
 
         document.querySelector(DOM.incomeBox).addEventListener('click', event => {
-            if(event.target.className === 'btn btn-edit')
+            if(event.target.className === 'btn btn-edit') {
                 document.querySelector(DOM.modalEdit).style.display = 'block';
+                document.querySelector(DOM.modalContainer).style.display = 'block'
+            }
 
             UICtrl.setModalBoxValues(event);
         });
 
         // open deleting box
         document.querySelector(DOM.expensesBox).addEventListener('click', event => {
-            if(event.target.className === 'btn btn-remove')
+            if(event.target.className === 'btn btn-remove') {
                 document.querySelector(DOM.modalDelete).style.display = 'block';
+                document.querySelector(DOM.modalContainer).style.display = 'block'
+            }
 
             UICtrl.setModalBoxValues(event);
         });
 
         document.querySelector(DOM.incomeBox).addEventListener('click', event => {
-            if(event.target.className === 'btn btn-remove')
+            if(event.target.className === 'btn btn-remove') {
                 document.querySelector(DOM.modalDelete).style.display = 'block';
+                document.querySelector(DOM.modalContainer).style.display = 'block'
+            }
 
             UICtrl.setModalBoxValues(event);
         });
@@ -175,20 +184,24 @@ const controller = (function (UICtrl) {
         document.querySelector(DOM.btnEditItem).addEventListener('click', () => {
             if(document.querySelector('.form-edit').valid) {
                 document.querySelector(DOM.modalEdit).style.display = 'none';
+                document.querySelector(DOM.modalContainer).style.display = 'none'
             }
         });
 
         document.querySelector(DOM.btnCloseEdit).addEventListener('click', () => {
             document.querySelector(DOM.modalEdit).style.display = 'none';
+            document.querySelector(DOM.modalContainer).style.display = 'none'
         });
 
         // close the deleting box
         document.querySelector(DOM.btnDeleteItem).addEventListener('click', () => {
             document.querySelector(DOM.modalDelete).style.display = 'none';
+            document.querySelector(DOM.modalContainer).style.display = 'none'
         });
 
         document.querySelector(DOM.btnCloseDelete).addEventListener('click', () => {
             document.querySelector(DOM.modalDelete).style.display = 'none';
+            document.querySelector(DOM.modalContainer).style.display = 'none'
         });
     }
 
