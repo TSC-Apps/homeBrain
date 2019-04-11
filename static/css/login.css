@@ -45,8 +45,10 @@
 }
 
 #title-main-login {
-  text-align: center;
-  margin: 100px 0 0 0;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 40px;
 }
 
 a {

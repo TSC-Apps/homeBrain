@@ -7,14 +7,13 @@
 
             {% for mess in get_flashed_messages() %}
                 <div class="flash-message" role="alert">
-                    <strong>Na grube fryty!</strong> {{ mess }} Errare humanum est.
+                    <strong>Błąd!</strong> {{ mess }}
                     <span class="fas fa-times btn-close-modal btn-close-flash"></span>
                 </div>
             {% endfor %}
 
-            <h2 id="title-main-login">Logowanie.</h2>
-
             <section class="box-login">
+                <p id="title-main-login">Logowanie do strony</p>
                 <form method="POST" action="">
                     <input type="text" id="login-name" name="username" placeholder="Nazwa"
                            value={{ request.form.username }}>

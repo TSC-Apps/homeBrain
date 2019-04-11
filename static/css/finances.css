@@ -30,6 +30,10 @@
   border-color: #26DA6E;
 }
 
+.select-accept-date {
+  background: none;
+}
+
 .boxes {
   display: flex;
   justify-content: space-between;
@@ -81,6 +85,7 @@ table {
 .table {
   max-height: 230px;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: block;
 }
 

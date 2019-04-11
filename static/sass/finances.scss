@@ -36,6 +36,10 @@
     border-color: $green;
 }
 
+.select-accept-date {
+    background: none;
+}
+
 //=====================
 // Boxes
 .boxes {
@@ -84,6 +88,7 @@ table {
 .table {
     max-height: 230px;
     overflow-y: scroll;
+    overflow-x: hidden;
     display: block;
 }
 

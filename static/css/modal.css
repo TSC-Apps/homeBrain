@@ -1,17 +1,13 @@
 .modal {
   background-color: white;
-  max-width: 350px;
-  position: fixed;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  margin-top: 200px;
+  width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px;
   text-align: center;
   border-radius: 7px;
-  -webkit-box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 25px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
   border: 1px solid #E3E3E3;
 }
@@ -54,6 +50,7 @@
   padding: 7px;
   border-radius: 7px;
   border: 2px solid transparent;
+  width: 80%;
 }
 
 .modal input:focus {
