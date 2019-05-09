@@ -87,7 +87,7 @@ const UIcontroller = (function () {
             itemValue = itemName.nextSibling.nextSibling;
             itemDate = itemValue.nextSibling.nextSibling.nextSibling.nextSibling;
             itemName = itemName.textContent;
-            itemValue = itemValue.textContent.split('-')[1];
+            itenValue = itemValue.textContent.substr(0, 1) == '-' ? itemValue = itemValue.textContent.split('-')[1] : itemValue = itemValue.textContent.split('+')[1];
             itemDate = itemDate.textContent;
 
             if(event.target.className === "btn btn-edit") {
