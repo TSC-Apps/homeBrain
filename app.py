@@ -133,11 +133,14 @@ def register():
     if request.method == 'POST':
         if form.validate_on_submit():
             name = form.name.data
-            password = generate_password_hash(form.password.data)
-            user = User(name=name, password=password)
-            db.session.add(user)
-            db.session.commit()
-            print('New user created')
+            if User.query.filter_by(name=name).first():
+                flash('Taki użytkownik już istnieje')
+            else:
+                password = generate_password_hash(form.password.data)
+                user = User(name=name, password=password)
+                db.session.add(user)
+                db.session.commit()
+                flash('Stworzono nowego użytkownika')
 
     return render_template('register.html', form=form)
 
