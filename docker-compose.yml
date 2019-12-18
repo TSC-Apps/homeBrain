@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - DB_HOST=mysql
+      - MYSQL_DATABASE=homeBrainDB
+      - MYSQL_USER=homeBrain
+      - MYSQL_PASSWORD=#W4lepsze
+      - MYSQL_ALLOW_EMPTY_PASSWORD='yes'
+    ports:
+      - "3306"
+    volumes:
+      - db_docker_volume:/var/lib/mysql
+  web:
+    build: .
+    command: flask run
+    volumes:
+      - .:/code
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+volumes:
+  db_docker_volume:

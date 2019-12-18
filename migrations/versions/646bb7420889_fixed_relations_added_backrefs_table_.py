@@ -41,7 +41,7 @@ def upgrade():
     )
     op.drop_index('name', table_name='users')
     op.drop_table('users')
-    op.drop_table('bilance')
+    # op.drop_table('bilance')
     # ### end Alembic commands ###
 
 
