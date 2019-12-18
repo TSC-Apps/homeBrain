@@ -15,10 +15,9 @@
             <section class="box-login">
                 <p id="title-main-login">Logowanie do strony</p>
                 <form method="POST" action="">
-                    <input type="text" id="login-name" name="username" placeholder="Nazwa"
-                           value={{ request.form.username }}>
-                    <input type="password" id="login-password" name="password" placeholder="Hasło"
-                           value={{ request.form.password }}>
+                    {{ form.csrf_token }}
+                    {{ form.name(id_= "login-name")}}
+                    {{ form.password(id_ = "login-password") }}
                     <button class="btn btn-login" type="submit">Zaloguj</button>
 {#                    <div class="forgot-pwd"><a href="lost-password.html">Zgubione hasło</a></div>#}
                 </form>

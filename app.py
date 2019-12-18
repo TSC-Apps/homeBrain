@@ -4,7 +4,7 @@ from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from homebrain.models import User, Item
 from homebrain import app, db
-from homebrain.forms import RegisterForm
+from homebrain.forms import RegisterForm, LoginForm
 
 
 @app.route('/post_item', methods=['POST'])
@@ -104,26 +104,25 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
+
     if request.method == 'POST':
-        username = request.form['username'].title()
-        password_candidate = request.form['password']
-
-        result = User.query.filter_by(name=username).first()
-
-        if result:
-            # Sprawdzenie czy hash i haslo pasuju
-            if check_password_hash(result.password, password_candidate):
-                session['logged_in'] = True
-                session['username'] = username
-                return redirect(url_for('index'))
+        if form.validate_on_submit():
+            name = form.name.data
+            user = User.query.filter_by(name=name).first()
+            if user:
+                # Sprawdzenie czy hash i haslo pasuju
+                if check_password_hash(user.password, form.password.data):
+                    session['logged_in'] = True
+                    session['username'] = name
+                    return redirect(url_for('index'))
+                else:
+                    flash("Podałeś złe hasło.")
+                    return redirect(url_for('index'))
             else:
-                flash("Podałeś złe hasło.")
-                return redirect(url_for('index'))
-        else:
-            flash("Nie ma takiego użytkownika.")
-            return render_template('login.html')
+                flash("Nie ma takiego użytkownika.")
 
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
 
 @app.route('/register', methods=['GET', 'POST'])

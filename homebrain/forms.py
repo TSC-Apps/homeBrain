@@ -9,3 +9,8 @@ class RegisterForm(FlaskForm):
                                                                                  message='Hasła muszą być zgodne')],
                              render_kw={"placeholder": "Hasło"})
     confirm = PasswordField('Powtórz hasło', render_kw={"placeholder": "Powtórz hasło"})
+
+
+class LoginForm(FlaskForm):
+    name = StringField('Podaj imie', validators=[InputRequired()], render_kw={"placeholder": "Imie"})
+    password = PasswordField('Podaj hasło', validators=[InputRequired()], render_kw={"placeholder": "Hasło"})
