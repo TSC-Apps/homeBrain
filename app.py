@@ -1,53 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_sqlalchemy import SQLAlchemy
+from flask import render_template, request, redirect, url_for, session, flash
 from checker import check_logged_in
 from datetime import datetime
-from flask_migrate import Migrate
-from werkzeug.security import check_password_hash
-
-app = Flask(__name__)
-
-app.secret_key = 'w4lepsze'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://homeBrain:#W4lepsze@127.0.0.1/homeBrainDB'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-Migrate(app, db)
-
-
-class Item(db.Model):
-    __tablename__ = 'bilance'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    category = db.Column(db.Text, nullable=False)
-    name = db.Column(db.Text, nullable=False)
-    person = db.Column(db.Text, nullable=False)
-    day = db.Column(db.Integer, nullable=False)
-    month = db.Column(db.Integer, nullable=False)
-    year = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.Text, nullable=False)
-    value = db.Column(db.Float, nullable=False)
-
-    def __init__(self, category, name, person, day, month, year, date, value):
-        self.category = category
-        self.name = name
-        self.person = person
-        self.day = day
-        self.month = month
-        self.year = year
-        self.date = date
-        self.value = value
-
-
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = db.Column(db.Text, nullable=False, unique=True)
-    password = db.Column(db.Text, nullable=False)
-
-    def __init__(self, name, password):
-        self.name = name
-        self.password = password
+from werkzeug.security import check_password_hash, generate_password_hash
+from homebrain.models import User, Item
+from homebrain import app, db
+from homebrain.forms import RegisterForm
 
 
 @app.route('/post_item', methods=['POST'])
@@ -167,6 +124,22 @@ def login():
             return render_template('login.html')
 
     return render_template('login.html')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm()
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            name = form.name.data
+            password = generate_password_hash(form.password.data)
+            user = User(name=name, password=password)
+            db.session.add(user)
+            db.session.commit()
+            print('New user created')
+
+    return render_template('register.html', form=form)
 
 
 @app.route('/logout')

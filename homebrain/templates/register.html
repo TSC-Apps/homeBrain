@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% include 'includes/_basic_header.html' %}
+    <div class="content">
+        <div class="content-wrapper">
+
+            {% for mess in get_flashed_messages() %}
+                <div class="flash-message" role="alert">
+                    <strong>Błąd!</strong> {{ mess }}
+                    <span class="fas fa-times btn-close-modal btn-close-flash"></span>
+                </div>
+            {% endfor %}
+
+            <section class="box-login">
+                <p id="title-main-login">Rejestracja</p>
+                <form method="POST" action="/register">
+                    {{ form.csrf_token }}
+                    {{ form.name(id_= "login-name")}}
+                    {{ form.password(id_ = "login-password") }}
+                    {{ form.confirm(id_ = "login-password") }}
+
+                    <button class="btn btn-login" type="submit">Rejestruj</button>
+{#                    <div class="forgot-pwd"><a href="lost-password.html">Zgubione hasło</a></div>#}
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../static/js/login.js"></script>
+{% endblock %}
