@@ -1,20 +1,27 @@
 from flask import render_template, request, redirect, url_for, session, flash
-from checker import check_logged_in
+from flask_login import login_user, logout_user, current_user, login_required
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from homebrain.models import User, Item
-from homebrain import app, db
+from homebrain import app, db, login_manager
 from homebrain.forms import RegisterForm, LoginForm
 
 
+# Flask-Login callback
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
 @app.route('/post_item', methods=['POST'])
+@login_required
 def post_item():
     date = request.form['date'].split('-')
     if date:
         year = date[0]
         month = date[1]
         day = date[2]
-    item = Item(request.form['select-type'], request.form['name'], session['username'], day, month, year,
+    item = Item(request.form['select-type'], request.form['name'], current_user.name, day, month, year,
                 request.form['date'], request.form['value'])
     db.session.add(item)
     db.session.commit()
@@ -23,6 +30,7 @@ def post_item():
 
 
 @app.route('/delete_item', methods=['POST'])
+@login_required
 def delete_item():
     id = request.form['id']
 
@@ -34,6 +42,7 @@ def delete_item():
 
 
 @app.route('/edit_item', methods=['POST'])
+@login_required
 def edit_item():
     id = request.form['id-edit']
     item = Item.query.filter_by(id=id).first()
@@ -52,8 +61,8 @@ def edit_item():
     return redirect(url_for('index'))
 
 
-@app.route('/')
-@check_logged_in
+@app.route('/home')
+@login_required
 def index():
     now = datetime.now()
     month = now.month
@@ -102,7 +111,7 @@ def index():
                            final_bil=round(bilance, 2), header_content=header_content)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
@@ -113,8 +122,7 @@ def login():
             if user:
                 # Sprawdzenie czy hash i haslo pasuju
                 if check_password_hash(user.password, form.password.data):
-                    session['logged_in'] = True
-                    session['username'] = name
+                    login_user(user)
                     return redirect(url_for('index'))
                 else:
                     flash("Podałeś złe hasło.")
@@ -145,8 +153,9 @@ def register():
 
 
 @app.route('/logout')
+@login_required
 def logout():
-    session.clear()
+    logout_user()
     return redirect(url_for('login'))
 
 
