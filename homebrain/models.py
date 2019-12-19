@@ -7,7 +7,6 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
     category = db.Column(db.Text, nullable=False)
     name = db.Column(db.Text, nullable=False)
-    person = db.Column(db.Text, nullable=False)
     day = db.Column(db.Integer, nullable=False)
     month = db.Column(db.Integer, nullable=False)
     year = db.Column(db.Integer, nullable=False)

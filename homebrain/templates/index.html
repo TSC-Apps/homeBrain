@@ -75,7 +75,7 @@
                                     <td class="table-item">{{ bilance_row.id }}</td>
                                     <td class="table-item item-name">{{ bilance_row.name }}</td>
                                     <td class="table-item  item-value">-{{ bilance_row.value }}</td>
-                                    <td class="table-item">{{ bilance_row.person }}</td>
+                                    <td class="table-item">{{ bilance_row.user.name }}</td>
                                     <td class="table-item">{{ bilance_row.date }}</td>
                                     <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                                 </tr>
@@ -105,7 +105,7 @@
                                 <td class="table-item">{{ bilance_row.id }}</td>
                                 <td class="table-item item-name">{{ bilance_row.name }}</td>
                                 <td class="table-item  item-value">+{{ bilance_row.value }}</td>
-                                <td class="table-item">{{ bilance_row.person }}</td>
+                                <td class="table-item">{{ bilance_row.user.name }}</td>
                                 <td class="table-item">{{ bilance_row.date }}</td>
                                 <td><img class="btn btn-edit" src="../static/img/icon-edit.svg" alt="Edit"></td>
                             </tr>

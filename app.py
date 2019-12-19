@@ -21,8 +21,8 @@ def post_item():
         year = date[0]
         month = date[1]
         day = date[2]
-    item = Item(request.form['select-type'], request.form['name'], current_user.name, day, month, year,
-                request.form['date'], request.form['value'])
+    item = Item(category=request.form['select-type'], name=request.form['name'], day=day, month=month, year=year,
+                date=request.form['date'], value=request.form['value'], user=current_user)
     db.session.add(item)
     db.session.commit()
 
@@ -120,7 +120,7 @@ def login():
             name = form.name.data
             user = User.query.filter_by(name=name).first()
             if user:
-                # Sprawdzenie czy hash i haslo pasuju
+                # Sprawdzenie czy hash i haslo pasuja
                 if check_password_hash(user.password, form.password.data):
                     login_user(user)
                     return redirect(url_for('index'))
