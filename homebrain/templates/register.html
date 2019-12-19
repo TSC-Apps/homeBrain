@@ -7,7 +7,7 @@
 
             {% for mess in get_flashed_messages() %}
                 <div class="flash-message" role="alert">
-                    <strong>Błąd!</strong> {{ mess }}
+                    {{ mess }}
                     <span class="fas fa-times btn-close-modal btn-close-flash"></span>
                 </div>
             {% endfor %}

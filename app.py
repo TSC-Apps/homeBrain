@@ -25,7 +25,6 @@ def index():
         if add_form.validate_on_submit():
             item = Item(category=add_form.category.data, name=add_form.name.data, date=add_form.date.data,
                         value=add_form.value.data, user=current_user)
-            app.logger.error(item)
             db.session.add(item)
             db.session.commit()
         elif edit_form.validate_on_submit():
@@ -48,10 +47,8 @@ def index():
     if 'select-months' and 'select-years' in request.args:
         month = request.args['select-months']
         year = request.args['select-years']
-        app.logger.info(f"{month}, {year}")
-        current_date.replace(month=1)
-        current_date.replace(year=int(year))
-        app.logger.info(current_date)
+        current_date = current_date.replace(month=int(month))
+        current_date = current_date.replace(year=int(year))
 
     # Ogolne wydatki i przychody z danego miesiaca
     content_expenses = Item.query.filter(extract('month', Item.date) == current_date.month).\

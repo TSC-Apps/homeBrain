@@ -16,6 +16,7 @@ services:
       - db_docker_volume:/var/lib/mysql
   web:
     build: .
+    restart: always
     command: flask run
     volumes:
       - .:/code
