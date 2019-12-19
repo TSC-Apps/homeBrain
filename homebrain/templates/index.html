@@ -9,11 +9,12 @@
         <div class="modal" id="modal-edit">
             <span class="fas fa-times btn-close-modal btn-close-edit"></span>
             <h3>Edycja rekordu</h3>
-            <form class="form-edit" method="POST" action="{{ url_for('edit_item') }}">
-                <p>ID:</p><input class="input-edit-id" name="id-edit" type="text">
-                <p>Nazwa:</p><input required class="input-edit-name" maxlength="10" type="text" name="name-edit">
-                <p>Wartość:</p><input required class="input-edit-value" maxlength="10" step="0.01" name= "value-edit" type="number">
-                <p>Data:</p><input required class="input-edit-date" type="date" name="date-edit">
+            <form class="form-edit" method="POST" action="{{ url_for('index') }}">
+                {{ edit_form.csrf_token }}
+                <p>{{ edit_form.id.label }}</p> {{ edit_form.id(class="input-edit-id") }}
+                <p>{{ edit_form.name.label }}</p> {{ edit_form.name(class="input-edit-name") }}
+                <p>{{ edit_form.value.label }}</p> {{ edit_form.value(class="input-edit-value") }}
+                <p>{{ edit_form.date.label }}</p> {{ edit_form.date(class="input-edit-date") }}
                 <button type="submit" class="btn btn-add btn-modal-item btn-edit-item">Edytuj</button>
             </form>
         </div>
@@ -21,8 +22,10 @@
         <div class="modal" id="modal-delete">
             <span class="fas fa-times btn-close-modal btn-close-delete"></span>
             <h3>Usuwanie rekordu</h3>
-            <form method="POST" action="{{ url_for('delete_item') }}">
-                <p>ID:</p><input class="input-delete-id" name="id" type="text">
+            <form method="POST" action="{{ url_for('index') }}">
+                {{ delete_form.csrf_token }}
+                <p>{{ delete_form.id.label }}</p>
+                {{ delete_form.id(class="input-delete-id") }}
                 <button type="submit" class="btn btn-add btn-modal-item btn-delete-item">Usuń</button>
             </form>
         </div>
@@ -42,16 +45,12 @@
             </form>
 
             <section class="box-horizontal" id="box-settings">
-                <form method="POST" action="{{ url_for('post_item') }}">
-                    <select class="select-type" name="select-type">
-                        <option value="Wydatek">Wydatek</option>
-                        <option value="Przychod">Przychód</option>
-                    </select>
-
-                    <input class="input" required maxlength="10" type="text" id="name" name="name" placeholder="Nazwa">
-                    <input class="input" required maxlength="10" type="number" step="0.01" id="value" name="value"
-                           placeholder="Wartość">
-                    <input class="input" required type="date" id="date" name="date">
+                <form method="POST" action="{{ url_for('index') }}">
+                    {{ add_form.csrf_token }}
+                    {{ add_form.category(class="select-type") }}
+                    {{ add_form.name }}
+                    {{ add_form.value }}
+                    {{ add_form.date(id="date") }}
                     <button type="submit" class="btn btn-add">Dodaj</button>
                 </form>
             </section>

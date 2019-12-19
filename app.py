@@ -4,7 +4,7 @@ from datetime import date
 from werkzeug.security import check_password_hash, generate_password_hash
 from homebrain.models import User, Item
 from homebrain import app, db, login_manager
-from homebrain.forms import RegisterForm, LoginForm
+from homebrain.forms import RegisterForm, LoginForm, AddItemForm, EditItemForm, DeleteItemForm
 from sqlalchemy import extract
 
 
@@ -14,54 +14,36 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-@app.route('/post_item', methods=['POST'])
-@login_required
-def post_item():
-    item = Item(category=request.form['select-type'], name=request.form['name'], date=request.form['date'],
-                value=request.form['value'], user=current_user)
-    db.session.add(item)
-    db.session.commit()
-
-    return redirect(url_for('index'))
-
-
-@app.route('/delete_item', methods=['POST'])
-@login_required
-def delete_item():
-    id = request.form['id']
-
-    item = Item.query.filter_by(id=id).first()
-    db.session.delete(item)
-    db.session.commit()
-
-    return redirect(url_for('index'))
-
-
-@app.route('/edit_item', methods=['POST'])
-@login_required
-def edit_item():
-    id = request.form['id-edit']
-    item = Item.query.filter_by(id=id).first()
-
-    name = request.form['name-edit']
-    value = request.form['value-edit']
-    date = request.form['date-edit']
-
-    if name and value and date:
-        item.name = name
-        item.value = value
-        item.date = date
-
-        db.session.commit()
-
-    return redirect(url_for('index'))
-
-
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 @login_required
 def index():
-    current_date = date.today()
+    add_form = AddItemForm()
+    edit_form = EditItemForm()
+    delete_form = DeleteItemForm()
 
+    if request.method == 'POST':
+        if add_form.validate_on_submit():
+            item = Item(category=add_form.category.data, name=add_form.name.data, date=add_form.date.data,
+                        value=add_form.value.data, user=current_user)
+            app.logger.error(item)
+            db.session.add(item)
+            db.session.commit()
+        elif edit_form.validate_on_submit():
+            item = Item.query.filter_by(id=edit_form.id.data).first()
+            item.date = edit_form.date.data
+            item.value = edit_form.value.data
+            item.name = edit_form.name.data
+            db.session.commit()
+        elif delete_form.validate_on_submit():
+            id = delete_form.id.data
+            item = Item.query.get(id)
+            if item:
+                db.session.delete(item)
+                db.session.commit()
+        else:
+            app.logger.error('FORM NOT VALID')
+
+    current_date = date.today()
     # zabieg mający na celu sprawdzenie czy kazaliśmy filtrować rekordy
     if 'select-months' and 'select-years' in request.args:
         month = request.args['select-months']
@@ -71,13 +53,10 @@ def index():
         current_date.replace(year=int(year))
         app.logger.info(current_date)
 
-    app.logger.info(current_date)
-
     # Ogolne wydatki i przychody z danego miesiaca
     content_expenses = Item.query.filter(extract('month', Item.date) == current_date.month).\
         filter(extract('year', Item.date) == current_date.year).filter_by(category='Wydatek').\
         order_by(Item.date.desc()).all()
-    app.logger.info(content_expenses)
 
     content_incomes = Item.query.filter(extract('month', Item.date) == current_date.month).\
         filter(extract('year', Item.date) == current_date.year).filter_by(category='Przychod').\
@@ -112,7 +91,8 @@ def index():
 
     return render_template('index.html', the_data_expenses=content_expenses, the_data_incomes=content_incomes,
                            sum_inc=round(sum_incomes, 2), sum_exp=round(sum_expenses, 2),
-                           final_bil=round(bilance, 2), header_content=header_content)
+                           final_bil=round(bilance, 2), header_content=header_content, add_form=add_form,
+                           edit_form=edit_form, delete_form=delete_form)
 
 
 @app.route('/', methods=['GET', 'POST'])
