@@ -1,10 +1,11 @@
-from flask import render_template, request, redirect, url_for, session, flash
+from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user, login_required
-from datetime import datetime
+from datetime import date
 from werkzeug.security import check_password_hash, generate_password_hash
 from homebrain.models import User, Item
 from homebrain import app, db, login_manager
 from homebrain.forms import RegisterForm, LoginForm
+from sqlalchemy import extract
 
 
 # Flask-Login callback
@@ -16,13 +17,8 @@ def load_user(user_id):
 @app.route('/post_item', methods=['POST'])
 @login_required
 def post_item():
-    date = request.form['date'].split('-')
-    if date:
-        year = date[0]
-        month = date[1]
-        day = date[2]
-    item = Item(category=request.form['select-type'], name=request.form['name'], day=day, month=month, year=year,
-                date=request.form['date'], value=request.form['value'], user=current_user)
+    item = Item(category=request.form['select-type'], name=request.form['name'], date=request.form['date'],
+                value=request.form['value'], user=current_user)
     db.session.add(item)
     db.session.commit()
 
@@ -64,20 +60,28 @@ def edit_item():
 @app.route('/home')
 @login_required
 def index():
-    now = datetime.now()
-    month = now.month
-    year = now.year
+    current_date = date.today()
 
     # zabieg mający na celu sprawdzenie czy kazaliśmy filtrować rekordy
     if 'select-months' and 'select-years' in request.args:
         month = request.args['select-months']
         year = request.args['select-years']
+        app.logger.info(f"{month}, {year}")
+        current_date.replace(month=1)
+        current_date.replace(year=int(year))
+        app.logger.info(current_date)
+
+    app.logger.info(current_date)
 
     # Ogolne wydatki i przychody z danego miesiaca
-    content_expenses = Item.query.filter_by(month=month).filter_by(year=year).filter_by(category='Wydatek').order_by(
-        Item.date.desc()).all()
-    content_incomes = Item.query.filter_by(month=month).filter_by(year=year).filter_by(category='Przychod').order_by(
-        Item.date.desc()).all()
+    content_expenses = Item.query.filter(extract('month', Item.date) == current_date.month).\
+        filter(extract('year', Item.date) == current_date.year).filter_by(category='Wydatek').\
+        order_by(Item.date.desc()).all()
+    app.logger.info(content_expenses)
+
+    content_incomes = Item.query.filter(extract('month', Item.date) == current_date.month).\
+        filter(extract('year', Item.date) == current_date.year).filter_by(category='Przychod').\
+        order_by(Item.date.desc()).all()
 
     # bilans miesięczny
     sum_expenses = 0
