@@ -7,6 +7,7 @@
 App written in JS and Flask that helps controlling home finances, enables user to add and remove To-Do tasks and make some reservations.
 
 Link http://homebraintsc.eu.pythonanywhere.com/login
+newer version: http://51.38.135.146/
 if you want to see all features, contact us: webdesign@frankiewicz.com.pl
 
 
