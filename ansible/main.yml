@@ -1,0 +1,45 @@
+---
+- name: Setup homeBrain for production use.
+  hosts: ubuntu
+  become: true
+
+  tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+
+    - name: Ensure nginx is installed.
+      package:
+        name: nginx-core
+        state: present
+
+    - name: Ensure virtualenv is installed.
+      package:
+        name: python3-venv
+        state: present
+    
+    - name: Ensure pip is installed.
+      package:
+        name: python3-pip
+        state: present
+  
+    - name: Clone the repository.
+      become: false
+      git:
+        repo: https://github.com/TSC-Apps/homeBrain.git
+        dest: /home/ubuntu/homeBrain
+        version: master
+      
+    - name: Create a virtualenv.
+      become: false
+      command: python3 -m venv /home/ubuntu/homeBrain/venv
+
+    - name: Install packages into virtualenv
+      become: false
+      pip: 
+        requirements: /home/ubuntu/homeBrain/requirements.txt
+        virtualenv: /home/ubuntu/homeBrain/venv
+
