@@ -49,6 +49,7 @@
       copy:
         src: /home/ubuntu/homeBrain/homeBrain.service
         dest: /etc/systemd/system/
+        remote_src: yes
 
     - name: Ensure homeBrain service is started.
       service:
