@@ -36,10 +36,26 @@
     - name: Create a virtualenv.
       become: false
       command: python3 -m venv /home/ubuntu/homeBrain/venv
+      args:
+        creates: /home/ubuntu/homeBrain/venv
 
-    - name: Install packages into virtualenv
+    - name: Install packages into virtualenv.
       become: false
       pip: 
         requirements: /home/ubuntu/homeBrain/requirements.txt
         virtualenv: /home/ubuntu/homeBrain/venv
 
+    - name: Copy systemd service file.
+      copy:
+        src: /home/ubuntu/homeBrain/homeBrain.service
+        dest: /etc/systemd/system/
+
+    - name: Ensure homeBrain service is started.
+      service:
+        name: homeBrain
+        state: started
+    
+    - name: Ensure homeBrain service is enabled.
+      service:
+        name: homeBrain
+        state: enabled

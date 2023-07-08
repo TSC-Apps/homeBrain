@@ -1,0 +1,12 @@
+[Unit]
+Description=HomeBrain app
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/homeBrain/
+ExecStart=/home/ubuntu/homeBrain/venv/bin/gunicorn app:app --bind 0.0.0.0:8000
+
+[Install]
+WantedBy=multi-user.target
