@@ -3,6 +3,9 @@
   hosts: ubuntu
   become: true
 
+  vars:
+    app_path: /home/ubuntu/homeBrain
+
   tasks:
     - name: Update and upgrade apt packages
       become: true
@@ -11,43 +14,37 @@
         update_cache: yes
         cache_valid_time: 86400 #One day
 
-    - name: Ensure nginx is installed.
-      package:
-        name: nginx-core
+    - name: Ensure required packages are installed.
+      apt:
+        name: "{{ item }}"
         state: present
-
-    - name: Ensure virtualenv is installed.
-      package:
-        name: python3-venv
-        state: present
-    
-    - name: Ensure pip is installed.
-      package:
-        name: python3-pip
-        state: present
+      with_items:
+        - python3-venv
+        - python3-pip
+        - nginx-core
   
     - name: Clone the repository.
       become: false
       git:
         repo: https://github.com/TSC-Apps/homeBrain.git
-        dest: /home/ubuntu/homeBrain
+        dest: "{{ app_path }}"
         version: master
       
     - name: Create a virtualenv.
       become: false
-      command: python3 -m venv /home/ubuntu/homeBrain/venv
+      command: python3 -m venv "{{ app_path }}"/venv
       args:
-        creates: /home/ubuntu/homeBrain/venv
+        creates: "{{ app_path }}/venv"
 
     - name: Install packages into virtualenv.
       become: false
       pip: 
-        requirements: /home/ubuntu/homeBrain/requirements.txt
-        virtualenv: /home/ubuntu/homeBrain/venv
+        requirements: "{{ app_path }}/requirements.txt"
+        virtualenv: "{{ app_path }}/venv"
 
     - name: Copy systemd service file.
       copy:
-        src: /home/ubuntu/homeBrain/homeBrain.service
+        src: "{{ app_path }}/homeBrain.service"
         dest: /etc/systemd/system/
         remote_src: yes
 
@@ -68,7 +65,7 @@
     
     - name: Copy nginx configuration.
       copy:
-        src: /home/ubuntu/homeBrain/homeBrain.sites-available
+        src: "{{ app_path }}/homeBrain.sites-available"
         dest: /etc/nginx/sites-available
         remote_src: yes
 
