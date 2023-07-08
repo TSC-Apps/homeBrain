@@ -59,4 +59,26 @@
     - name: Ensure homeBrain service is enabled.
       service:
         name: homeBrain
-        state: enabled
+        enabled: yes
+
+    - name: Remove default Nginx configuration.
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+    
+    - name: Copy nginx configuration.
+      copy:
+        src: /home/ubuntu/homeBrain/homeBrain.sites-available
+        dest: /etc/nginx/sites-available
+        remote_src: yes
+
+    - name: Enable Nginx site.
+      file:
+        src: /etc/nginx/sites-available/homeBrain.sites-available
+        dest: /etc/nginx/sites-enabled/homeBrain.sites-available
+        state: link
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
